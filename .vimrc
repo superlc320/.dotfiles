@@ -42,21 +42,31 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " solarized theme
-""Plugin 'altercation/vim-colors-solarized'
+" 安装完成后按照官网说明复制颜色主题文件，并在section 2启用solarized主题
+Plugin 'altercation/vim-colors-solarized'
+
+" show directory tree
+" 用于显示目录树，在section 3设置nerdtree快捷键
+Plugin 'scrooloose/nerdtree'
+
 " auto complete
 ""Plugin 'Valloric/YouCompleteMe'
-" show directory tree
-""Plugin 'scrooloose/nerdtree'
+
 " intensely orgasmic commenting
 ""Plugin 'scrooloose/nerdcommenter'
+
 " auto-complete quotes, parens, brackets, etc.
 ""Plugin 'Raimondi/delimitMate'
+
 " easily delete, change adn add surroundings in pairs
 ""Plugin 'tpope/vim-surround'
+
 " display tags in a window
 ""Plugin 'majutsushi/tagbar'
+
 " Syntax checking hacks for vim
 ""Plugin 'scrooloose/syntastic'
+
 " easy code formatting
 ""Plugin 'Chiel92/vim-autoformat'
 
@@ -168,3 +178,30 @@ let mapleader = ","
 
 " 设置复制粘贴系统剪切板
 set clipboard=unnamedplus
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 02. Solarized Theme settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" use dark solarized theme
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 03. NERD tree settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" open a NERDTree automatically when vim starts up
+" vim启动实自动打开NERDTree, 并不需要
+" autocmd vimenter * NERDTree
+
+" open and close NERDTree
+" 打开和关闭NERDTree快捷键
+noremap <F3> :NERDTreeToggle<CR>
+
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
