@@ -4,10 +4,10 @@
 " Created Time : 2016.04.22
 " E-mail       : luocan14@gmail.com
 " URL          : https://github.com/superlc320/.dotfiles
-" Signiture    : make progress along with Vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 00. Vundle Start
+" 00. Vundle Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use the Vim's keyboard setting, not vi
 set nocompatible              " be iMproved, required
@@ -41,23 +41,23 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " solarized theme
-Plugin 'altercation/vim-colors-solarized'
+""Plugin 'altercation/vim-colors-solarized'
 " auto complete
-Plugin 'Valloric/YouCompleteMe'
+""Plugin 'Valloric/YouCompleteMe'
 " show directory tree
-Plugin 'scrooloose/nerdtree'
+""Plugin 'scrooloose/nerdtree'
 " intensely orgasmic commenting
-Plugin 'scrooloose/nerdcommenter'
+""Plugin 'scrooloose/nerdcommenter'
 " auto-complete quotes, parens, brackets, etc.
-Plugin 'Raimondi/delimitMate'
+""Plugin 'Raimondi/delimitMate'
 " easily delete, change adn add surroundings in pairs
-Plugin 'tpope/vim-surround'
+""Plugin 'tpope/vim-surround'
 " display tags in a window
-Plugin 'majutsushi/tagbar'
+""Plugin 'majutsushi/tagbar'
 " Syntax checking hacks for vim
-Plugin 'scrooloose/syntastic'
+""Plugin 'scrooloose/syntastic'
 " easy code formatting
-Plugin 'Chiel92/vim-autoformat'
+""Plugin 'Chiel92/vim-autoformat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -126,73 +126,3 @@ let mapleader = ","
 
 " 设置复制粘贴系统剪切板
 set clipboard=unnamedplus
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 02. Theme settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" use dark solarized theme
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 03. Plugin settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree settings "
-" open and close NERDTree
-noremap <F3> :NERDTreeToggle<CR>
-" open a NERDTree automatically when vim starts up
-"autocmd vimenter * NERDTree
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" TagBar settings "
-let g:tagbar_ctags_bin = '/usr/bin/ctags'
-let g:tagbar_width=30
-let g:tagbar_autofocus=1
-noremap <F4> :TagbarToggle<CR>
-
-" delimitMate "
-let delimitMate_expand_space = 1
-let delimitMate_expand_cr = 1
-
-" Syntastic settings "
-" recommended settings for newer
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cuda_check_header = 1
-let g:syntastic_cuda_arch = "sm_52"
-
-" autoformat settings "
-noremap <F5> :Autoformat<CR>
-au BufWrite * :Autoformat
-
-" YouCompleteMe settings "
-let g:ycm_global_ycm_extra_conf = '/home/superlc320/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"let g:ycm_global_ycm_extra_conf = '/home/superlc320/.ycm_extra_conf.py'
-let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 04. C++ compile and run settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w <CR>:!gcc % -o %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w <CR>:!gcc -g % -o %:r && gdb %:r<CR>
-
-" g++ compile and run C++ file
-autocmd filetype cpp nnoremap <F9> :w <CR>:!g++ -std=c++11  % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w <CR>:!g++ -std=c++11 -g  % -o %:r && gdb %:r<CR>
-
-
-augroup filetypedetect
-    au BufNewFile,BufRead *.cu setl ft=cuda
-    au BufNewFile,BufRead *.cuh setl ft=cuda
-augroup END
