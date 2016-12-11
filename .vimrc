@@ -9,6 +9,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 00. Vundle Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Use the Vim's keyboard setting, not vi
 set nocompatible              " be iMproved, required
 " Close filetype detection
@@ -77,42 +78,63 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 01. General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " open filetype detection
+" 打开文件类型检测
 filetype on
+
 " Set the width
+" 设置列宽为160
 set columns=160
+
 " Set the height
 set lines=50
+
 " Set the line number
 set number
+
 " Enable mouse in all models
 set mouse=a
+
 " Highlight current line
 set cursorline
+
 " Syntax highlighting
 syntax on
+
 " Highlight the search result
 set hlsearch
+
 " Real-time search
 set incsearch
+
 " Set the fold method as indent
 set foldmethod=indent
+
 " Set the fold level
 set foldlevel=99
+
 " C style indent
 set cindent
+
 " Copy indent from current line when starting a new lin
 set autoindent
+
 " >> = 4 chars
 set shiftwidth=4
+
 " Tab = 4
 set tabstop=4
+
 " mix tab with space
 set softtabstop=4
+
 " Use the space instead of Tab
 set expandtab
+
 " smart indent
 set smartindent
+
 " show mode
 set showmode
 " show cmd
