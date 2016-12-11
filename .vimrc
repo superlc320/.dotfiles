@@ -84,65 +84,85 @@ filetype plugin indent on    " required
 filetype on
 
 " Set the width
-" 设置列宽为160
-set columns=160
+" 设置窗口列宽
+set columns=120
 
 " Set the height
+" 设置窗口行高
 set lines=50
 
 " Set the line number
+" 显示行号
 set number
 
 " Enable mouse in all models
+" 在所有模式中启用鼠标
 set mouse=a
 
 " Highlight current line
-set cursorline
+" 为光标所在行加下划线，感觉不是很实用，取消了
+" set cursorline
 
 " Syntax highlighting
+" 使用Vim默认的语法高亮
 syntax on
 
 " Highlight the search result
+" 搜索结果高亮
 set hlsearch
 
 " Real-time search
+" 实时搜索
 set incsearch
 
 " Set the fold method as indent
+" 启用缩进折叠，使用命令，可以手动折叠缩进，使用命令，可以打开折叠的缩进
 set foldmethod=indent
 
 " Set the fold level
+" 最大的折叠层级
 set foldlevel=99
 
-" C style indent
-set cindent
-
-" Copy indent from current line when starting a new lin
+" Copy indent from current line when starting a new line
+" 将当前行的对齐格式应用到新的下一行
 set autoindent
 
 " >> = 4 chars
+" 自动缩进4个字符
 set shiftwidth=4
 
 " Tab = 4
+" 指定tab缩进4个字符
 set tabstop=4
 
 " mix tab with space
+" 具体含义请google
 set softtabstop=4
 
 " Use the space instead of Tab
+" 将tab转换为空格
 set expandtab
 
+" C style indent
+" 缩进C语言内嵌代码块
+set cindent
+
 " smart indent
+" 为C程序提供自动缩进
 set smartindent
 
 " show mode
 set showmode
+
 " show cmd
 set showcmd
+
 " set vim color = 256
 set t_Co=256
+
 " switch paste or not by f12
 set pastetoggle=<f12>
+
 " map <Leader> to ,
 let mapleader = ","
 
