@@ -49,11 +49,12 @@ Plugin 'altercation/vim-colors-solarized'
 " 用于显示目录树，在section 3设置nerdtree快捷键
 Plugin 'scrooloose/nerdtree'
 
+" intensely orgasmic commenting
+" 为代码添加注释
+Plugin 'scrooloose/nerdcommenter'
+
 " auto complete
 ""Plugin 'Valloric/YouCompleteMe'
-
-" intensely orgasmic commenting
-""Plugin 'scrooloose/nerdcommenter'
 
 " auto-complete quotes, parens, brackets, etc.
 ""Plugin 'Raimondi/delimitMate'
@@ -173,9 +174,6 @@ set t_Co=256
 " switch paste or not by f12
 set pastetoggle=<f12>
 
-" map <Leader> to ,
-let mapleader = ","
-
 " 设置复制粘贴系统剪切板
 set clipboard=unnamedplus
 
@@ -194,7 +192,7 @@ colorscheme solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " open a NERDTree automatically when vim starts up
-" vim启动实自动打开NERDTree, 并不需要
+" vim启动时自动打开NERDTree, 并不需要
 " autocmd vimenter * NERDTree
 
 " open and close NERDTree
@@ -203,5 +201,43 @@ noremap <F3> :NERDTreeToggle<CR>
 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 04. NERD commenter settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" map <Leader> from '\' to ','
+let mapleader = ","
+
+" [count]<Leader>cc 注释当前行和选中行
+" [count]<Leader>cn 注释当前行和选中行, forces nesting
+" [count]<Leader>c<space> 反转当前行和选中行的注释状态，所有状态只和最上面一行状态有关
+" [count]<Leader>cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
+" [count]<Leader>ci 独立反转选中区域的注释状态，每行只和自己之前的状态有关
+" [count]<Leader>cs 添加性感的注释，通常用于代码开头介绍部分
+" [count]<Leader>cy 先复制选中部分，再cc
+" <Leader>c$        注释当前光标到行尾的内容
+" <Leader>cA        跳转到当前行尾添加注释，并进入插入模式
+" <Leader>ca        切换注释的方式，比如: /**/和//
+" <Leader>cl        左对齐
+" <Leader>cb        左右对齐
+" <Leader>cu        取消注释
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
