@@ -65,20 +65,24 @@ Plugin 'Valloric/YouCompleteMe'
 
 " auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
+" 在section 6配置
 Plugin 'Raimondi/delimitMate'
 
 " easily delete, change and add surroundings in pairs
 " 改变一对标记，（括号，引号，XML标记，等等）
+" 在section 7有命令说明
 Plugin 'tpope/vim-surround'
 
 " Syntax checking hacks for vim
+" 语法检查
+" 在section 8配置
 Plugin 'scrooloose/syntastic'
+
+" easy code formatting
+Plugin 'Chiel92/vim-autoformat'
 
 " display tags in a window
 ""Plugin 'majutsushi/tagbar'
-
-" easy code formatting
-""Plugin 'Chiel92/vim-autoformat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -301,9 +305,12 @@ let g:syntastic_check_on_wq = 0
 " let g:syntastic_cuda_check_header = 1
 " let g:syntastic_cuda_arch = "sm_61"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 09. vim-autoformat settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-
+noremap <F5> :Autoformat<CR>
+au BufWrite * :Autoformat
 
 
 
