@@ -64,10 +64,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'Valloric/YouCompleteMe'
 
 " auto-complete quotes, parens, brackets, etc.
-""Plugin 'Raimondi/delimitMate'
+" 自动补全引号，括号
+Plugin 'Raimondi/delimitMate'
 
-" easily delete, change adn add surroundings in pairs
-""Plugin 'tpope/vim-surround'
+" easily delete, change and add surroundings in pairs
+" 改变一对标记，（括号，引号，XML标记，等等）
+Plugin 'tpope/vim-surround'
 
 " display tags in a window
 ""Plugin 'majutsushi/tagbar'
@@ -259,6 +261,33 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 " 语法关键字补全
 let g:ycm_seed_identifiers_with_syntax = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 06. delimitMate settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Nothing to do
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 07. vim-surround settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" "Hello world!"
+" Press cs"'
+" => 'Hello world!'
+" Press cs'<q>
+" => <q>Hello world!</q>
+" Press cst"
+" => "Hello world!"
+" Press ds"
+" => Hello world!
+" 其余妙用，参见github
+
+
+
+
+
+
 
 
 
