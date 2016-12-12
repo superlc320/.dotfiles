@@ -60,6 +60,7 @@ Plugin 'scrooloose/nerdcommenter'
 " 超强的自动补全插件。
 " Vundle安装后需要按照官网说明进行编译。
 " 在section 5配置YCM
+" 还需要配置.ycm_extra_conf.py,这很重要
 Plugin 'Valloric/YouCompleteMe'
 
 " auto-complete quotes, parens, brackets, etc.
