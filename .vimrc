@@ -322,12 +322,12 @@ let g:formatterpath = ['/usr/bin/clang-format']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w <CR>:!gcc % -O %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w <CR>:!gcc % -O %:r && gdb %:r<CR>
+autocmd filetype c nnoremap <F9> :w <CR>:!gcc % -o %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F10> :w <CR>:!gcc % -o %:r && gdb %:r<CR>
 
 " g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w <CR>:!g++ -std=c++11 % -O %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w <CR>:!g++ -std=c++11 % -O %:r && gdb %:r<CR>
+autocmd filetype cpp nnoremap <F9> :w <CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w <CR>:!g++ -std=c++11 % -o %:r && gdb %:r<CR>
 
 augroup filetypedetect
     au BufNewFile, BufRead *.cu setl ft=cuda
