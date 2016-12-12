@@ -312,9 +312,20 @@ let g:syntastic_check_on_wq = 0
 noremap <F5> :Autoformat<CR>
 au BufWrite * :Autoformat
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 10. C++ compile and run settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" gcc compile and run C file
+autocmd filetype c nnoremap <F9> :w <CR>:!gcc % -O %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F10> :w <CR>:!gcc % -O %:r && gdb %:r<CR>
 
+" g++ compile and run c++ file
+autocmd filetype cpp nnoremap <F9> :w <CR>:!g++ -std=c++11 % -O %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w <CR>:!g++ -std=c++11 % -O %:r && gdb %:r<CR>
 
-
-
+augroup filetypedetect
+    au BufNewFile, BufRead *.cu setl ft=cuda
+    au BufNewFile, BufRead *.cuh setl ft=cuda
+augroup END
 
