@@ -42,19 +42,25 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " solarized theme
-" 安装完成后按照官网说明复制颜色主题文件，并在section 2启用solarized主题
+" 安装完成后按照官网说明复制颜色主题文件
+" 在section 2启用solarized主题
 Plugin 'altercation/vim-colors-solarized'
 
 " show directory tree
-" 用于显示目录树，在section 3设置nerdtree快捷键
+" 用于显示目录树
+" 在section 3设置nerdtree快捷键
 Plugin 'scrooloose/nerdtree'
 
 " intensely orgasmic commenting
 " 为代码添加注释
+" 在section 4有命令说明
 Plugin 'scrooloose/nerdcommenter'
 
 " auto complete
-""Plugin 'Valloric/YouCompleteMe'
+" 超强的自动补全插件。
+" Vundle安装后需要按照官网说明进行编译。
+" 在section 5配置YCM
+Plugin 'Valloric/YouCompleteMe'
 
 " auto-complete quotes, parens, brackets, etc.
 ""Plugin 'Raimondi/delimitMate'
@@ -96,7 +102,7 @@ filetype on
 
 " Set the width
 " 设置窗口列宽
-set columns=120
+set columns=160
 
 " Set the height
 " 设置窗口行高
@@ -224,18 +230,34 @@ let mapleader = ","
 " <Leader>cb        左右对齐
 " <Leader>cu        取消注释
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 05. YCM settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" 设置ycm global配置文件路径
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/._ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
+" 关闭加载.ycm_extra_conf.py的提示
+let g:ycm_confirm_extra_conf = 0
 
+" 从第二个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion = 2
 
+" 关闭基于tags的引擎
+let g:ycm_collect_identifiers_from_tags_files = 0
 
+" 在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
 
+" 在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
 
+" 注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
-
-
-
-
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax = 1
 
 
 
