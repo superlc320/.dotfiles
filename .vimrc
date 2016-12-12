@@ -79,6 +79,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 
 " easy code formatting
+" 在section 9配置
+" 注意需要自己安装format软件，指定路径
 Plugin 'Chiel92/vim-autoformat'
 
 " display tags in a window
@@ -310,7 +312,10 @@ let g:syntastic_check_on_wq = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 noremap <F5> :Autoformat<CR>
-au BufWrite * :Autoformat
+" au BufWrite * :Autoformat
+
+" 制定clang-format的路径,其他路径可以在里面添加，用逗号分开
+let g:formatterpath = ['/usr/bin/clang-format']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 10. C++ compile and run settings
