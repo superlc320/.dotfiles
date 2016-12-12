@@ -71,11 +71,11 @@ Plugin 'Raimondi/delimitMate'
 " 改变一对标记，（括号，引号，XML标记，等等）
 Plugin 'tpope/vim-surround'
 
+" Syntax checking hacks for vim
+Plugin 'scrooloose/syntastic'
+
 " display tags in a window
 ""Plugin 'majutsushi/tagbar'
-
-" Syntax checking hacks for vim
-""Plugin 'scrooloose/syntastic'
 
 " easy code formatting
 ""Plugin 'Chiel92/vim-autoformat'
@@ -266,7 +266,9 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " 06. delimitMate settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Nothing to do
+" 以前配的，忘记有什么用了
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 07. vim-surround settings
@@ -282,6 +284,22 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " Press ds"
 " => Hello world!
 " 其余妙用，参见github
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 08. syntastic settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" recommended settings for newer
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" let g:syntastic_cuda_check_header = 1
+" let g:syntastic_cuda_arch = "sm_61"
 
 
 
