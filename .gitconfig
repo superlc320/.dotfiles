@@ -24,3 +24,12 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[alias]
+	co = checkout
+    br = branch
+    cm = commit -m
+    cam = commit -a -m
+    st = status
+    lg = log --graph --oneline --all --decorate
+    df = diff
+
