@@ -28,7 +28,7 @@
 	co = checkout
     br = branch
     cm = commit -m
-    cam = commit -a -m
+    ca = commit -a -m
     st = status
     lg = log --graph --oneline --all --decorate
     df = diff

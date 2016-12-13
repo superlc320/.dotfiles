@@ -250,8 +250,8 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 " 关闭加载.ycm_extra_conf.py的提示
 let g:ycm_confirm_extra_conf = 0
 
-" 从第二个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion = 2
+" 从第1个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion = 1
 
 " 关闭基于tags的引擎
 let g:ycm_collect_identifiers_from_tags_files = 0
