@@ -69,6 +69,8 @@ flags = [
 '/usr/include/c++/5.4.0',
 '-isystem',
 '/usr/include/x86_64-linux-gnu/c++',
+'-isystem',
+'/usr/local/cuda/include'
 ###############################################################################
 # This path will only work on OS X, but extra paths that don't exist are not
 # harmful
