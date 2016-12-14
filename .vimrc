@@ -192,6 +192,8 @@ set pastetoggle=<f12>
 " 设置复制粘贴系统剪切板
 set clipboard=unnamedplus
 
+" 设置字体为utf-8
+set encoding=utf-8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 02. Solarized Theme settings
