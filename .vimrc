@@ -317,7 +317,7 @@ noremap <F5> :Autoformat<CR>
 " au BufWrite * :Autoformat
 
 " 制定clang-format的路径,其他路径可以在里面添加，用逗号分开
-let g:formatterpath = ['/usr/bin/clang-format']
+let g:formatterpath = ['/usr/bin/astyle']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 10. C++ compile and run settings
