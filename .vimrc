@@ -51,7 +51,6 @@ Plugin 'altercation/vim-colors-solarized'
 " 在section 3设置nerdtree快捷键
 Plugin 'scrooloose/nerdtree'
 
-" intensely orgasmic commenting
 " 为代码添加注释
 " 在section 4有命令说明
 Plugin 'scrooloose/nerdcommenter'
@@ -66,6 +65,7 @@ Plugin 'Valloric/YouCompleteMe'
 " auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
 " 在section 6配置
+" 安装了YCM就默认启动了语法检查，不需要了。
 Plugin 'Raimondi/delimitMate'
 
 " easily delete, change and add surroundings in pairs
@@ -76,7 +76,7 @@ Plugin 'tpope/vim-surround'
 " Syntax checking hacks for vim
 " 语法检查
 " 在section 8配置
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 
 " easy code formatting
 " 在section 9配置
@@ -85,6 +85,9 @@ Plugin 'Chiel92/vim-autoformat'
 
 " display tags in a window
 ""Plugin 'majutsushi/tagbar'
+
+" vim-powerline
+Plugin 'Lokaltog/vim-powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -249,8 +252,8 @@ let mapleader = ","
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置ycm global配置文件路径
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/._ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
 
 " 关闭加载.ycm_extra_conf.py的提示
 let g:ycm_confirm_extra_conf = 0
@@ -259,7 +262,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_min_num_of_chars_for_completion = 1
 
 " 关闭基于tags的引擎
-let g:ycm_collect_identifiers_from_tags_files = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 " 在注释输入中也能补全
 let g:ycm_complete_in_comments = 1
@@ -272,6 +275,13 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 " 语法关键字补全
 let g:ycm_seed_identifiers_with_syntax = 1
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDeclarationElseDeclaration<CR>
+
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. delimitMate settings

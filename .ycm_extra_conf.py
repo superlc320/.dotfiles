@@ -61,19 +61,17 @@ flags = [
 'c++',
 '-isystem',
 '../BoostParts',
-'-isystem',
-###############################################################################
+################################################################################
 '-isystem',
 '/usr/include',
 '-isystem',
 '/usr/include/c++/5.4.0',
 '-isystem',
-'/usr/include/x86_64-linux-gnu/c++',
-'-isystem',
-'/usr/local/cuda/include'
-###############################################################################
+'/usr/local/cuda-8.0/include/',
+################################################################################
 # This path will only work on OS X, but extra paths that don't exist are not
 # harmful
+'-isystem',
 '/System/Library/Frameworks/Python.framework/Headers',
 '-isystem',
 '../llvm/include',
@@ -184,10 +182,10 @@ def FlagsForFile( filename, **kwargs ):
     # NOTE: This is just for YouCompleteMe; it's highly likely that your project
     # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
     # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
-    #try:
-    #  final_flags.remove( '-stdlib=libc++' )
-    #except ValueError:
-    #  pass
+    try:
+      final_flags.remove( '-stdlib=libc++' )
+    except ValueError:
+      pass
   else:
     relative_to = DirectoryOfThisScript()
     final_flags = MakeRelativePathsInFlagsAbsolute( flags, relative_to )
