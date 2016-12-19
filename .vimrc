@@ -344,8 +344,6 @@ autocmd filetype c nnoremap <F10> :w <CR>:!gcc % -o %:r && gdb %:r<CR>
 autocmd filetype cpp nnoremap <F9> :w <CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
 autocmd filetype cpp nnoremap <F10> :w <CR>:!g++ -std=c++11 % -o %:r && gdb %:r<CR>
 
-augroup filetypedetect
-    au BufNewFile, BufRead *.cu setl ft=cuda
-    au BufNewFile, BufRead *.cuh setl ft=cuda
-augroup END
+au BufNewFile,BufRead   *.cu    set filetype=cuda
+au BufNewFile,BufRead   *.cuh   set filetype=cuda
 
