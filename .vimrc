@@ -73,11 +73,6 @@ Plugin 'Raimondi/delimitMate'
 " 在section 7有命令说明
 Plugin 'tpope/vim-surround'
 
-" Syntax checking hacks for vim
-" 语法检查
-" 在section 8配置
-"Plugin 'scrooloose/syntastic'
-
 " easy code formatting
 " 在section 9配置
 " 注意需要自己安装format软件，指定路径
@@ -112,13 +107,16 @@ filetype plugin indent on    " required
 " 打开文件类型检测
 filetype on
 
+" 关闭设置窗口大小，不然ssh连接服务器，打开vim编辑文件各行会显示错位
+""""""""""""""""""""""""""""""""""""""""
 " Set the width
 " 设置窗口列宽
-set columns=160
+" set columns=160
 
 " Set the height
 " 设置窗口行高
-set lines=50
+" set lines=50
+""""""""""""""""""""""""""""""""""""""""
 
 " Set the line number
 " 显示行号
@@ -128,9 +126,12 @@ set number
 " 在所有模式中启用鼠标
 set mouse=a
 
+" 关闭此选项，感觉不是很实用
+""""""""""""""""""""""""""""""""""""""""
 " Highlight current line
-" 为光标所在行加下划线，感觉不是很实用，取消了
+" 为光标所在行加下划线
 " set cursorline
+"""""""""""""""""""""""""""""""""""""""" 
 
 " Syntax highlighting
 " 使用Vim默认的语法高亮
@@ -189,17 +190,15 @@ set showcmd
 " set vim color = 256
 set t_Co=256
 
-" switch paste or not by f12
-set pastetoggle=<f12>
+" switch paste or not by F12
+" 设置切换粘贴状态快捷键
+set pastetoggle=<F12>
 
 " 设置复制粘贴系统剪切板
 set clipboard=unnamedplus
 
 " 设置字体为utf-8
 set encoding=utf-8
-
-" 设置切换粘贴状态快捷键
-set pastetoggle=<F1>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 02. Solarized Theme settings
@@ -261,7 +260,7 @@ let g:ycm_confirm_extra_conf = 0
 " 从第1个键入字符就开始罗列匹配项
 let g:ycm_min_num_of_chars_for_completion = 1
 
-" 关闭基于tags的引擎
+" 打开基于tags的引擎
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 " 在注释输入中也能补全
@@ -270,18 +269,27 @@ let g:ycm_complete_in_comments = 1
 " 在字符串输入中也能补全
 let g:ycm_complete_in_strings = 1
 
-" 注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" 注释和字符串中的文字不会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
 
 " 语法关键字补全
 let g:ycm_seed_identifiers_with_syntax = 1
 
+" 转到声明
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+" 转到定义
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" 声明和定义切换
 nnoremap <leader>gg :YcmCompleter GoToDeclarationElseDeclaration<CR>
 
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
+
+" 打开YCM语法检查
+let g:ycm_show_diagnostics_ui = 1
+
+" 强制YCM语法检查
+nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. delimitMate settings
@@ -307,29 +315,16 @@ let delimitMate_expand_cr = 1
 " 其余妙用，参见github
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 08. syntastic settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" recommended settings for newer
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_cuda_check_header = 1
-" let g:syntastic_cuda_arch = "sm_61"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 09. vim-autoformat settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" 自动格式化
 noremap <F5> :Autoformat<CR>
+
+" 关闭写文件时自动格式化
 " au BufWrite * :Autoformat
 
-" 制定clang-format的路径,其他路径可以在里面添加，用逗号分开
+" 使用astyple格式化代码
 let g:formatterpath = ['/usr/bin/astyle']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
