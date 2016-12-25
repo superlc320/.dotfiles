@@ -84,6 +84,9 @@ Plugin 'Chiel92/vim-autoformat'
 " vim-powerline
 Plugin 'Lokaltog/vim-powerline'
 
+" indentLine
+Plugin 'Yggdroot/indentLine'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -291,6 +294,9 @@ let g:ycm_show_diagnostics_ui = 1
 " 强制YCM语法检查
 nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 
+" 提供Python3补全
+let g:ycm_python_binary_path = '/usr/bin/python3'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. delimitMate settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -342,3 +348,15 @@ autocmd filetype cpp nnoremap <F10> :w <CR>:!g++ -std=c++11 % -o %:r && gdb %:r<
 au BufNewFile,BufRead   *.cu    set filetype=cuda
 au BufNewFile,BufRead   *.cuh   set filetype=cuda
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 11. indentLine settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 默认关闭缩进线
+let g:indentLine_enabled = 0
+
+" 设置indentLine样式
+let g:indentLine_char = '¦'
+
+" 切换显示indentLine
+nnoremap <F4> :IndentLinesToggle<CR>
