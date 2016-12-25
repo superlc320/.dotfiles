@@ -43,49 +43,53 @@ Plugin 'VundleVim/Vundle.vim'
 
 " solarized theme
 " 安装完成后按照官网说明复制颜色主题文件
-" 在section 2启用solarized主题
 Plugin 'altercation/vim-colors-solarized'
 
 " show directory tree
 " 用于显示目录树
-" 在section 3设置nerdtree快捷键
 Plugin 'scrooloose/nerdtree'
 
 " 为代码添加注释
-" 在section 4有命令说明
 Plugin 'scrooloose/nerdcommenter'
 
 " auto complete
 " 超强的自动补全插件。
-" Vundle安装后需要按照官网说明进行编译。
-" 在section 5配置YCM
+" 安装后需要按照官网说明进行编译。
+" 支持语义补全部分需要仔细阅读。
 " 还需要配置.ycm_extra_conf.py,这很重要
 Plugin 'Valloric/YouCompleteMe'
 
 " auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
-" 在section 6配置
-" 安装了YCM就默认启动了语法检查，不需要了。
 Plugin 'Raimondi/delimitMate'
 
 " easily delete, change and add surroundings in pairs
 " 改变一对标记，（括号，引号，XML标记，等等）
-" 在section 7有命令说明
 Plugin 'tpope/vim-surround'
 
+" 语法检查
+" 需要自已选择并安装各语言的语法检查器
+Plugin 'vim-syntastic/syntastic'
+
 " easy code formatting
-" 在section 9配置
 " 注意需要自己安装format软件，指定路径
+" C系语言用astyle
 Plugin 'Chiel92/vim-autoformat'
 
-" display tags in a window
-""Plugin 'majutsushi/tagbar'
-
 " vim-powerline
+" 增强vim状态栏
 Plugin 'Lokaltog/vim-powerline'
 
 " indentLine
+" 显示缩进线
 Plugin 'Yggdroot/indentLine'
+
+" format python code
+" 需要自己安装autopep8
+Plugin 'tell-k/vim-autopep8'
+
+" python语义补全
+Plugin 'davidhalter/jedi'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -103,7 +107,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 01. General settings
+" 000. General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " open filetype detection
@@ -215,7 +219,33 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <SPACE> za
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 02. Solarized Theme settings
+" 001.compile and run settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" gcc compile and run C file
+autocmd filetype c nnoremap <F9> :w<CR>:!gcc % -o %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F10> :w<CR>:!gcc % -o %:r && gdb %:r<CR>
+
+" g++ compile and run c++ file
+autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -o %:r && gdb %:r<CR>
+
+" python3 run python file
+autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
+
+" python  run python file
+autocmd filetype python nnoremap <F10> :w<CR>:!python %<CR> 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 002. filetype settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" cuda file 
+au BufNewFile,BufRead   *.cu    set filetype=cuda
+au BufNewFile,BufRead   *.cuh   set filetype=cuda
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 100. Solarized Theme settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " use dark solarized theme
@@ -224,7 +254,7 @@ let g:solarized_termcolors=256
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 03. NERD tree settings
+" 101. NERD tree settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " open a NERDTree automatically when vim starts up
@@ -240,7 +270,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 04. NERD commenter settings
+" 102. NERD commenter settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " map <Leader> from '\' to ','
@@ -261,7 +291,7 @@ let mapleader = ","
 " <Leader>cu        取消注释
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 05. YCM settings
+" 103. YCM settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置ycm global配置文件路径
@@ -300,7 +330,7 @@ let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
 
 " 打开YCM语法检查
-let g:ycm_show_diagnostics_ui = 1
+let g:ycm_show_diagnostics_ui = 0
 
 " 强制YCM语法检查
 nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
@@ -308,8 +338,11 @@ nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 " 提供Python3补全
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
+" 关闭preview window
+nnoremap <F1> <C-W>z<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 06. delimitMate settings
+" 104. delimitMate settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 以前配的，忘记有什么用了
@@ -317,7 +350,7 @@ let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 07. vim-surround settings
+" 105. vim-surround settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " "Hello world!"
@@ -332,7 +365,29 @@ let delimitMate_expand_cr = 1
 " 其余妙用，参见github
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09. vim-autoformat settings
+" 106. syntastic settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" 对不同的文件使用不同的语法检查，例子
+" let g:syntastic_<filetype>_checkers = ['checker-name']
+
+" python语法检查
+let g:syntastic_python_checkers = ['pyflakes']
+
+" CUDA语法检查
+" let g:syntastic_cuda_checkers = ['/usr/local/cuda/bin/nvcc']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 107. vim-autoformat settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 自动格式化
@@ -345,22 +400,7 @@ noremap <F5> :Autoformat<CR>
 let g:formatterpath = ['/usr/bin/astyle']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 10. C++ compile and run settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w <CR>:!gcc % -o %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w <CR>:!gcc % -o %:r && gdb %:r<CR>
-
-" g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w <CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w <CR>:!g++ -std=c++11 % -o %:r && gdb %:r<CR>
-
-au BufNewFile,BufRead   *.cu    set filetype=cuda
-au BufNewFile,BufRead   *.cuh   set filetype=cuda
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 11. indentLine settings
+" 108. indentLine settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 默认关闭缩进线
@@ -371,3 +411,14 @@ let g:indentLine_char = '¦'
 
 " 切换显示indentLine
 nnoremap <F4> :IndentLinesToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 109. autopep8 Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" F8格式化python代码
+autocmd filetype python nnoremap <F8> :call Autopep8()<CR>
+
+" disable show diff window
+let g:autopep8_disable_show_diff = 1
+
