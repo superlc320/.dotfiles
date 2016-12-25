@@ -203,6 +203,13 @@ set clipboard=unnamedplus
 " 设置字体为utf-8
 set encoding=utf-8
 
+" split navigations
+" 设置切换窗口快捷键
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 02. Solarized Theme settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
