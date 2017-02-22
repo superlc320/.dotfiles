@@ -398,6 +398,8 @@ noremap <F5> :Autoformat<CR>
 
 " 使用astyple格式化代码
 let g:formatterpath = ['/usr/bin/astyle']
+let g:formatdef_my_custom_cpp = '"astyle --style=kr"'
+let g:formatters_cpp = ['my_custom_cpp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 108. indentLine settings
