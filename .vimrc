@@ -227,8 +227,8 @@ autocmd filetype c nnoremap <F9> :w<CR>:!gcc % -o %:r && ./%:r<CR>
 autocmd filetype c nnoremap <F10> :w<CR>:!gcc % -g -o %:r && gdb %:r<CR>
 
 " g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:r<CR>
+autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++1y % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++1y % -g -o %:r && gdb %:r<CR>
 
 " python3 run python file
 autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
@@ -383,7 +383,7 @@ let g:syntastic_check_on_wq = 0
 " c++语法检查
 let g:syntastic_cpp_checkers = ['g++']
 let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra'
+let g:syntastic_cpp_compiler_options = '-std=c++1y -Wall -Wextra'
 let g:syntastic_cpp_check_header = 1
 
 " python语法检查
