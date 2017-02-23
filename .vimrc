@@ -380,6 +380,12 @@ let g:syntastic_check_on_wq = 0
 " 对不同的文件使用不同的语法检查，例子
 " let g:syntastic_<filetype>_checkers = ['checker-name']
 
+" c++语法检查
+let g:syntastic_cpp_checkers = ['g++']
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra'
+let g:syntastic_cpp_check_header = 1
+
 " python语法检查
 let g:syntastic_python_checkers = ['pyflakes']
 
