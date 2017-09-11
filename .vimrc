@@ -57,7 +57,10 @@ Plugin 'scrooloose/nerdcommenter'
 " 安装后需要按照官网说明进行编译。
 " 支持语义补全部分需要仔细阅读。
 " 还需要配置.ycm_extra_conf.py,这很重要
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
+
+" Generate config files for YouCompleteMe
+Plugin 'rdnetto/YCM-Generator'
 
 " auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
