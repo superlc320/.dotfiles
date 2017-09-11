@@ -47,10 +47,10 @@ Plugin 'altercation/vim-colors-solarized'
 
 " show directory tree
 " 用于显示目录树
-"Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " 为代码添加注释
-"Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
 " auto complete
 " 超强的自动补全插件。
@@ -61,35 +61,26 @@ Plugin 'altercation/vim-colors-solarized'
 
 " auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
-"Plugin 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
 " easily delete, change and add surroundings in pairs
 " 改变一对标记，（括号，引号，XML标记，等等）
-"Plugin 'tpope/vim-surround'
-
-" 语法检查
-" 需要自已选择并安装各语言的语法检查器
-"Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-surround'
 
 " easy code formatting
 " 注意需要自己安装format软件，指定路径
 " C系语言用astyle
-"Plugin 'Chiel92/vim-autoformat'
-
-" vim-powerline
-" 增强vim状态栏
-"Plugin 'Lokaltog/vim-powerline'
+Plugin 'Chiel92/vim-autoformat'
 
 " indentLine
-" 显示缩进线
-"Plugin 'Yggdroot/indentLine'
+" 缩进线
+Plugin 'Yggdroot/indentLine'
 
-" format python code
-" 需要自己安装autopep8
-"Plugin 'tell-k/vim-autopep8'
+" 状态栏
+Plugin 'vim-airline/vim-airline'
 
-" python语义补全
-"Plugin 'davidhalter/jedi'
+" 状态栏主题
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
