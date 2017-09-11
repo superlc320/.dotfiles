@@ -7,7 +7,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 00. Vundle Settings
+" Vundle Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use the Vim's keyboard setting, not vi
@@ -24,72 +24,72 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" " The following are examples of different formats supported.
-" " Keep Plugin commands between vundle#begin/end.
-" " plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" " plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" " Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" " The sparkup vim script is in a subdirectory of this repo called vim.
-" " Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" " Install L9 and avoid a Naming conflict if you've already installed a
-" " different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+""Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+""Plugin 'L9'
+" Git plugin not hosted on GitHub
+""Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+""Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+""Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " solarized theme
-" 安装完成后按照官网说明复制颜色主题文件
+" solarized颜色主题
 Plugin 'altercation/vim-colors-solarized'
 
 " show directory tree
 " 用于显示目录树
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 
 " 为代码添加注释
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
 
 " auto complete
 " 超强的自动补全插件。
 " 安装后需要按照官网说明进行编译。
 " 支持语义补全部分需要仔细阅读。
 " 还需要配置.ycm_extra_conf.py,这很重要
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Raimondi/delimitMate'
 
 " easily delete, change and add surroundings in pairs
 " 改变一对标记，（括号，引号，XML标记，等等）
-Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-surround'
 
 " 语法检查
 " 需要自已选择并安装各语言的语法检查器
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 
 " easy code formatting
 " 注意需要自己安装format软件，指定路径
 " C系语言用astyle
-Plugin 'Chiel92/vim-autoformat'
+"Plugin 'Chiel92/vim-autoformat'
 
 " vim-powerline
 " 增强vim状态栏
-Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
 
 " indentLine
 " 显示缩进线
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
 
 " format python code
 " 需要自己安装autopep8
-Plugin 'tell-k/vim-autopep8'
+"Plugin 'tell-k/vim-autopep8'
 
 " python语义补全
-Plugin 'davidhalter/jedi'
+"Plugin 'davidhalter/jedi'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -107,23 +107,12 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 000. General settings
+" General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " open filetype detection
 " 打开文件类型检测
 filetype on
-
-" 关闭设置窗口大小，不然ssh连接服务器，打开vim编辑文件各行会显示错位
-""""""""""""""""""""""""""""""""""""""""
-" Set the width
-" 设置窗口列宽
-" set columns=160
-
-" Set the height
-" 设置窗口行高
-" set lines=50
-""""""""""""""""""""""""""""""""""""""""
 
 " Set the line number
 " 显示行号
@@ -132,13 +121,6 @@ set number
 " Enable mouse in all models
 " 在所有模式中启用鼠标
 set mouse=a
-
-" 关闭此选项，感觉不是很实用
-""""""""""""""""""""""""""""""""""""""""
-" Highlight current line
-" 为光标所在行加下划线
-" set cursorline
-"""""""""""""""""""""""""""""""""""""""" 
 
 " Syntax highlighting
 " 使用Vim默认的语法高亮
@@ -178,7 +160,9 @@ set softtabstop=4
 
 " Use the space instead of Tab
 " 将tab转换为空格
-set expandtab
+" 这个设置很有意义，能够避免空格tab混用
+" 但组里人都不用，因此保持统一
+""set expandtab
 
 " C style indent
 " 缩进C语言内嵌代码块
@@ -213,13 +197,15 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
+nnoremap <C-W> <C-W><C-W>
 
 " Enable folding with the spacebar
 " 用空格键折叠代码
 nnoremap <SPACE> za
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 001.compile and run settings
+" Compile and run settings
+" 快速编译运行单个源程序
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gcc compile and run C file
@@ -227,25 +213,31 @@ autocmd filetype c nnoremap <F9> :w<CR>:!gcc % -o %:r && ./%:r<CR>
 autocmd filetype c nnoremap <F10> :w<CR>:!gcc % -g -o %:r && gdb %:r<CR>
 
 " g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++1y % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++1y % -g -o %:r && gdb %:r<CR>
+autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:r<CR>
 
 " python3 run python file
-autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
+""autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
 
 " python  run python file
-autocmd filetype python nnoremap <F10> :w<CR>:!python %<CR> 
+""autocmd filetype python nnoremap <F10> :w<CR>:!python %<CR> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 002. filetype settings
+" Filetype settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" cuda file 
-au BufNewFile,BufRead   *.cu    set filetype=cuda
-au BufNewFile,BufRead   *.cuh   set filetype=cuda
+" new file type
+""au BufNewFile,BufRead   *.suffix    set filetype=new_file_type
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 100. Solarized Theme settings
+                               Vim Plugins settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Solarized Theme settings
+" https://github.com/altercation/vim-colors-solarized
+" (S)颜色主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " use dark solarized theme
@@ -254,7 +246,9 @@ let g:solarized_termcolors=256
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 101. NERD tree settings
+" NERD tree settings
+" https://github.com/scrooloose/nerdtree
+" (S)目录树
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " open a NERDTree automatically when vim starts up
@@ -268,9 +262,10 @@ noremap <F3> :NERDTreeToggle<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 102. NERD commenter settings
+" NERD commenter settings
+" https://github.com/scrooloose/nerdcommenter
+" (A)快速注释
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " map <Leader> from '\' to ','
@@ -291,7 +286,7 @@ let mapleader = ","
 " <Leader>cu        取消注释
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 103. YCM settings
+" YouCompleteMe settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置ycm global配置文件路径
@@ -342,15 +337,18 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 nnoremap <F1> <C-W>z<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 104. delimitMate settings
+" delimitMate settings
+" https://github.com/Raimondi/delimitMate
+" (S)自动补全括号引号
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 以前配的，忘记有什么用了
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 105. vim-surround settings
+" vim-surround settings
+" https://github.com/tpope/vim-surround
+" (A)改变一对标记(引号，括号，XML标记)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " "Hello world!"
@@ -365,35 +363,9 @@ let delimitMate_expand_cr = 1
 " 其余妙用，参见github
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 106. syntastic settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-" 对不同的文件使用不同的语法检查，例子
-" let g:syntastic_<filetype>_checkers = ['checker-name']
-
-" c++语法检查
-let g:syntastic_cpp_checkers = ['g++']
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = '-std=c++1y -Wall -Wextra'
-let g:syntastic_cpp_check_header = 1
-
-" python语法检查
-let g:syntastic_python_checkers = ['pyflakes']
-
-" CUDA语法检查
-" let g:syntastic_cuda_checkers = ['/usr/local/cuda/bin/nvcc']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 107. vim-autoformat settings
+" vim-autoformat settings
+" ./install_astyle.sh
+" (S)C++代码格式化
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 自动格式化
@@ -408,7 +380,9 @@ let g:formatdef_my_custom_cpp = '"astyle --style=kr --pad-oper --indent-namespac
 let g:formatters_cpp = ['my_custom_cpp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 108. indentLine settings
+" indentLine settings
+" https://github.com/Yggdroot/indentLine
+" (B)缩进线
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 默认关闭缩进线
@@ -421,12 +395,13 @@ let g:indentLine_char = '¦'
 nnoremap <F4> :IndentLinesToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 109. autopep8 Settings
+" vim-airline settings 
+" https://github.com/vim-airline/vim-airline
+" (A)状态栏
+" vim-airline-themes settings 
+" https://github.com/vim-airline/vim-airline-themes
+" (A)状态栏主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" F8格式化python代码
-autocmd filetype python nnoremap <F8> :call Autopep8()<CR>
-
-" disable show diff window
-let g:autopep8_disable_show_diff = 1
+let g:airline_theme='solarized'
 
