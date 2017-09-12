@@ -125,6 +125,9 @@ set number
 " 在所有模式中启用鼠标
 set mouse=a
 
+" Backspace
+set backspace=indent,eol,start
+
 " Syntax highlighting
 " 使用Vim默认的语法高亮
 syntax on
