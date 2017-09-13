@@ -9,6 +9,6 @@ wget -c https://github.com/vim/vim/archive/v8.0.1095.tar.gz
 tar -zxvf v8.0.1095.tar.gz
 
 cd vim-8.0.1095
-./configure --with-features=huge -enable-pythoninterp --enable-python3interp
+./configure --with-features=huge --enable-pythoninterp 
 make 
 echo '123456' | sudo -S make install
