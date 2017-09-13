@@ -64,7 +64,7 @@ Plugin 'rdnetto/YCM-Generator'
 
 " auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
-Plugin 'Raimondi/delimitMate'
+Plugin 'jiangmiao/auto-pairs'
 
 " easily delete, change and add surroundings in pairs
 " 改变一对标记，（括号，引号，XML标记，等等）
@@ -84,6 +84,15 @@ Plugin 'vim-airline/vim-airline'
 
 " 状态栏主题
 Plugin 'vim-airline/vim-airline-themes'
+
+" 扩大缩小选定区域
+Plugin 'terryma/vim-expand-region'
+
+" 多标签
+Plugin 'vim-scripts/minibufexplorerpp'
+
+" taglist
+Plugin 'vim-scripts/taglist.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -331,15 +340,6 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 nnoremap <F1> <C-W>z<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" delimitMate settings
-" https://github.com/Raimondi/delimitMate
-" (S)自动补全括号引号
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let delimitMate_expand_space = 1
-let delimitMate_expand_cr = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-surround settings
 " https://github.com/tpope/vim-surround
 " (A)改变一对标记(引号，括号，XML标记)
@@ -370,7 +370,7 @@ noremap <F5> :Autoformat<CR>
 
 " 使用astyple格式化代码
 let g:formatterpath = ['/usr/bin/astyle']
-let g:formatdef_my_custom_cpp = '"astyle --style=kr --pad-oper --indent-namespaces --indent-switches"'
+let g:formatdef_my_custom_cpp = '"astyle --style=kr --pad-oper --indent-switches"'
 let g:formatters_cpp = ['my_custom_cpp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -398,4 +398,68 @@ nnoremap <F4> :IndentLinesToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline_theme='solarized'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto-pairs settings 
+" https://github.com/jiangmiao/auto-pairs
+" (S)自动补全引号，括号
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" auto-pairs并不需要设置
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-expand-region settings 
+" https://github.com/jiangmiao/auto-pairs
+" (S)扩大缩小选定区域
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 默认+扩大选定区域
+" 默认-缩小选定区域
+" 自定义
+" map K <Plug>(expand_region_expand)
+" map J <Plug>(expand_region_shrink)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" minibufexplorerpp settings 
+" https://github.com/vim-scripts/minibufexplorerpp
+" (S)多标签
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 设置minibufexplorerpp窗口最大高度为2行
+let g:miniBufExplMaxSize = 2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctags settings 
+" (B)系统已有ctags软件
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+noremap<F7> :!ctags -R --c++-kinds=+px --fields=+iaS --extra=+q <CR>
+set tags+=tags;
+set tags+=./tags;
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope settings 
+" (B)系统已有cscope软件
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+noremap <F8> :!cscope -Rbqk
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" taglist settings 
+" (B)显示taglist
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <F6> :TlistToggle<CR>
+
+" 只展示一个文件的taglist
+let Tlist_Show_One_File = 1
+" 当taglist是最后一个窗口时自动退出
+let Tlist_Exit_OnlyWindow = 1
+" 在右边显示taglist窗口
+let Tlist_Use_Right_Window = 1
+" tag按名字排序
+let Tlist_Sort_Type = "name"
+
+
+
 
