@@ -94,6 +94,18 @@ Plugin 'vim-scripts/minibufexplorerpp'
 " taglist
 Plugin 'vim-scripts/taglist.vim'
 
+" ctrlp
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" cctree
+Plugin 'vim-scripts/CCTree'
+
+" winmanager
+Plugin 'vim-scripts/winmanager'
+
+" easymotion
+Plugin 'easymotion/vim-easymotion'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -234,6 +246,7 @@ autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:
 
 " new file type
 ""au BufNewFile,BufRead   *.suffix    set filetype=new_file_type
+au BufNewFile,BufRead   *.cc    set filetype=cpp
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -324,8 +337,6 @@ let g:ycm_seed_identifiers_with_syntax = 1
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " 转到定义
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-" 声明和定义切换
-nnoremap <leader>gg :YcmCompleter GoToDeclarationElseDeclaration<CR>
 
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
@@ -431,6 +442,11 @@ let g:airline_theme='solarized'
 " 设置minibufexplorerpp窗口最大高度为2行
 let g:miniBufExplMaxSize = 2
 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags settings 
 " (B)系统已有ctags软件
@@ -463,6 +479,22 @@ let Tlist_Use_Right_Window = 1
 " tag按名字排序
 let Tlist_Sort_Type = "name"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp settings 
+" (S)快速打开文件
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cctree settings 
+" (S)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" winmanager settings 
+" (S)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" easymotion settings 
+" (S)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
