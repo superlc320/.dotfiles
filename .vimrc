@@ -217,9 +217,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-W> <C-W><C-W>
 
-" Enable folding with the spacebar
-" 用空格键折叠代码
-nnoremap <SPACE> za
+let mapleader = "\<Space>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and run settings
@@ -293,9 +291,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " https://github.com/scrooloose/nerdcommenter
 " (A)快速注释
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" map <Leader> from '\' to ','
-let mapleader = ","
 
 " [count]<Leader>cc 注释当前行和选中行
 " [count]<Leader>cn 注释当前行和选中行, forces nesting
@@ -469,6 +464,8 @@ set tags+=./tags;
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 noremap <F8> :!cscope -Rbqk
+
+"TODO 添加cscope设置
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " taglist settings 
