@@ -218,6 +218,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-W> <C-W><C-W>
 
 let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and run settings
@@ -442,12 +443,12 @@ let g:airline_theme='solarized'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置minibufexplorerpp窗口最大高度为2行
-let g:miniBufExplMaxSize = 2
+" let g:miniBufExplMaxSize = 2
 
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+" 切换标签快捷键
+nnoremap <silent> ) :bn<CR>
+nnoremap <silent> ( :bp<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags settings 
