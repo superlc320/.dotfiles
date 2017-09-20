@@ -310,7 +310,7 @@ let mapleader = ","
 
 " 设置ycm global配置文件路径
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
 
 " 关闭加载.ycm_extra_conf.py的提示
 let g:ycm_confirm_extra_conf = 0
