@@ -453,7 +453,7 @@ let g:airline_theme='solarized'
 " 切换标签快捷键
 nnoremap <silent> ) :bn<CR>
 nnoremap <silent> ( :bp<CR>
-
+nnoremap <silent> <Leader>d :bd<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags settings 
