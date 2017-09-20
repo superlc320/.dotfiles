@@ -209,6 +209,9 @@ set clipboard=unnamedplus
 " 设置字体为utf-8
 set encoding=utf-8
 
+" 文件不自动换行
+set nowrap
+
 " split navigations
 " 设置切换窗口快捷键
 nnoremap <C-H> <C-W><C-H>
@@ -286,6 +289,8 @@ noremap <F3> :NERDTreeToggle<CR>
 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeIgnore=['\.o', '\.swp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD commenter settings
