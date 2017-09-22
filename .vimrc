@@ -345,6 +345,8 @@ let g:ycm_seed_identifiers_with_syntax = 1
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " 转到定义
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" 转到定义或声明
+nnoremap <leader>tt :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
