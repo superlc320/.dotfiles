@@ -106,6 +106,9 @@ Plugin 'vim-scripts/winmanager'
 " easymotion
 Plugin 'easymotion/vim-easymotion'
 
+" C++头文件源文件切换
+Plugin 'vim-scripts/a.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
