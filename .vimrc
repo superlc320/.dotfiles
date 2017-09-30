@@ -75,10 +75,6 @@ Plugin 'tpope/vim-surround'
 " C系语言用astyle
 Plugin 'Chiel92/vim-autoformat'
 
-" indentLine
-" 缩进线
-Plugin 'Yggdroot/indentLine'
-
 " 状态栏
 Plugin 'vim-airline/vim-airline'
 
@@ -399,21 +395,6 @@ noremap <F5> :Autoformat<CR>
 let g:formatterpath = ['/usr/bin/astyle']
 let g:formatdef_my_custom_cpp = '"astyle --style=kr --pad-oper --indent-switches"'
 let g:formatters_cpp = ['my_custom_cpp']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" indentLine settings
-" https://github.com/Yggdroot/indentLine
-" (B)缩进线
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" 默认关闭缩进线
-let g:indentLine_enabled = 0
-
-" 设置indentLine样式
-let g:indentLine_char = '¦'
-
-" 切换显示indentLine
-nnoremap <F4> :IndentLinesToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline settings 
