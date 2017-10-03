@@ -41,36 +41,43 @@ Plugin 'VundleVim/Vundle.vim'
 " different version somewhere else.
 ""Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" solarized theme
 " solarized颜色主题
 Plugin 'altercation/vim-colors-solarized'
 
-" show directory tree
-" 用于显示目录树
+" molokai颜色主题
+Plugin 'tomasr/molokai' 
+
+" C++语法增强高亮
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" 头文件源文件切换
+Plugin 'derekwyatt/vim-fswitch' 
+
+" 快速打开文件
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" 目录树
 Plugin 'scrooloose/nerdtree'
 
 " 为代码添加注释
 Plugin 'scrooloose/nerdcommenter'
 
-" auto complete
-" 超强的自动补全插件。
-" 安装后需要按照官网说明进行编译。
-" 支持语义补全部分需要仔细阅读。
-" 还需要配置.ycm_extra_conf.py,这很重要
+" 自动补全神器
+" 安装后需要按照官网说明进行编译
+" 支持语义补全部分需要仔细阅读
+" 还需要配置.ycm_extra_conf.py
 Plugin 'Valloric/YouCompleteMe'
 
-" Generate config files for YouCompleteMe
+" 根据工程Makefile生成YCM的配置文件
 Plugin 'rdnetto/YCM-Generator'
 
-" auto-complete quotes, parens, brackets, etc.
 " 自动补全引号，括号
 Plugin 'jiangmiao/auto-pairs'
 
-" easily delete, change and add surroundings in pairs
 " 改变一对标记，（括号，引号，XML标记，等等）
 Plugin 'tpope/vim-surround'
 
-" easy code formatting
+" 自动格式化
 " 注意需要自己安装format软件，指定路径
 " C系语言用astyle
 Plugin 'Chiel92/vim-autoformat'
@@ -90,9 +97,6 @@ Plugin 'vim-scripts/minibufexplorerpp'
 " taglist
 Plugin 'vim-scripts/taglist.vim'
 
-" ctrlp
-Plugin 'ctrlpvim/ctrlp.vim'
-
 " cctree
 Plugin 'vim-scripts/CCTree'
 
@@ -100,10 +104,7 @@ Plugin 'vim-scripts/CCTree'
 Plugin 'vim-scripts/winmanager'
 
 " easymotion
-Plugin 'easymotion/vim-easymotion'
-
-" C++头文件源文件切换
-Plugin 'vim-scripts/a.vim'
+"""Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -122,64 +123,58 @@ filetype plugin indent on    " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
+" 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" open filetype detection
 " 打开文件类型检测
 filetype on
 
-" Set the line number
+" 根据不同的文件类型加载对应的插件
+filetype plugin on
+
 " 显示行号
 set number
 
-" Enable mouse in all models
 " 在所有模式中启用鼠标
 set mouse=a
 
 " Backspace
 set backspace=indent,eol,start
 
-" Syntax highlighting
 " 使用Vim默认的语法高亮
 syntax on
 
-" Highlight the search result
 " 搜索结果高亮
 set hlsearch
 
-" Real-time search
 " 实时搜索
 set incsearch
 
-" Set the fold method as indent
-" 启用缩进折叠，使用命令，可以手动折叠缩进，使用命令，可以打开折叠的缩进
+" 搜索时大小写不敏感
+""set ignorecase
+
+" za打开或关闭当前代码折叠
 set foldmethod=indent
 
-" Set the fold level
 " 最大的折叠层级
 set foldlevel=99
 
-" Copy indent from current line when starting a new line
 " 将当前行的对齐格式应用到新的下一行
 set autoindent
 
-" >> = 4 chars
-" 自动缩进4个字符
+" 缩进格式化时缩进4个字符
 set shiftwidth=4
 
-" Tab = 4
-" 指定tab缩进4个字符
+" 在插入模式下输入tab缩进4个字符
 set tabstop=4
 
-" mix tab with space
-" 具体含义请google
+" 将4个连续空格视为一个tab，一次删除4个空格
 set softtabstop=4
 
-" Use the space instead of Tab
-" 将tab转换为空格
-" 这个设置很有意义，能够避免空格tab混用
-" 但组里人都不用，因此保持统一
-""set expandtab
+" 将tab扩展为空格
+" 在Makefile中Tab有特殊意义，不应该被转换
+" 按Ctrl+v,再按Tab，就不会被转换了
+set expandtab
 
 " C style indent
 " 缩进C语言内嵌代码块
@@ -211,16 +206,51 @@ set encoding=utf-8
 " 文件不自动换行
 set nowrap
 
-" split navigations
+" vim命令行模式自动补全
+set wildmenu
+
+" 让vimrc配置立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General shortcut settings
+" 通用快捷键设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 将<Leader>定义为空格键
+let mapleader = "\<Space>"
+
+" 映射模式前缀
+" nore: 非递归
+" n:    在普通模式下生效
+" v:    在可视模式下生效
+" i:    在插入模式下生效
+" c:    在EX命令模式下生效
+
+" 键表
+" <S-x>         Shift+x
+" <C-x>         Ctrl+x
+" <A-x>         Alt+x
+" <F1>-<F12>    F1到F12功能键
+
+" 保存当前文件
+nnoremap <Leader>w :w<CR>
+
+" 关闭当前文件
+nnoremap <Leader>q :q<CR>
+
+" 将选中文本块复制到系统剪切板
+vnoremap <Leader>y "+y
+
+" 设置快捷键
+nnoremap <Leader>p "+p
+
 " 设置切换窗口快捷键
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-W> <C-W><C-W>
-
-let mapleader = "\<Space>"
-nnoremap <Leader>w :w<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compile and run settings
@@ -255,10 +285,10 @@ au BufNewFile,BufRead   *.cc    set filetype=cpp
 
 " When open a file, always jump to the last cursor positon
 if has("autocmd")
-	autocmd BufReadPost *
-	\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-	\	exe "normal! g'\"" | 
-	\ endif
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" | 
+    \ endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -267,10 +297,31 @@ endif
 " (S)颜色主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" use dark solarized theme
+"set background=dark
+"let g:solarized_termcolors=256
+"colorscheme solarized
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" molokai Theme settings
+" https://github.com/tomasr/molokai 
+" (S)颜色主题
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+let g:molokai_original=1
+let g:rehash256=1
+colorscheme molokai
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-fswitch settings 
+" (S)头文件源文件切换
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <Leader>a :FSHere<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp settings 
+" (S)快速打开文件
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD tree settings
@@ -475,10 +526,6 @@ let Tlist_Use_Right_Window = 1
 " tag按名字排序
 let Tlist_Sort_Type = "name"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrlp settings 
-" (S)快速打开文件
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cctree settings 
@@ -494,3 +541,4 @@ let Tlist_Sort_Type = "name"
 " easymotion settings 
 " (S)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
