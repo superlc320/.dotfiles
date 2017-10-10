@@ -176,11 +176,9 @@ set softtabstop=4
 " 按Ctrl+v,再按Tab，就不会被转换了
 set expandtab
 
-" C style indent
 " 缩进C语言内嵌代码块
 set cindent
 
-" smart indent
 " 为C程序提供自动缩进
 set smartindent
 
@@ -193,7 +191,6 @@ set showcmd
 " set vim color = 256
 set t_Co=256
 
-" switch paste or not by F12
 " 设置切换粘贴状态快捷键
 set pastetoggle=<F12>
 
@@ -242,7 +239,7 @@ nnoremap <Leader>q :q<CR>
 " 将选中文本块复制到系统剪切板
 vnoremap <Leader>y "+y
 
-" 设置快捷键
+" 将系统剪切板的内容粘贴到vim
 nnoremap <Leader>p "+p
 
 " 设置切换窗口快捷键
