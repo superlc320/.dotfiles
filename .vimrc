@@ -388,6 +388,9 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 " 语法关键字补全
 let g:ycm_seed_identifiers_with_syntax = 1
 
+" 补全之后关闭preview窗口
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 " 转到声明
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " 转到定义
