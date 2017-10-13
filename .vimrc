@@ -275,6 +275,8 @@ autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:
 " new file type
 ""au BufNewFile,BufRead   *.suffix    set filetype=new_file_type
 au BufNewFile,BufRead   *.cc    set filetype=cpp
+au BufNewFile,BufRead   *.hrp   set filetype=cpp
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File Open settings
