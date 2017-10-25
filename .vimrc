@@ -206,9 +206,6 @@ set nowrap
 " vim命令行模式自动补全
 set wildmenu
 
-" 让vimrc配置立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General shortcut settings
 " 通用快捷键设置
@@ -277,7 +274,6 @@ autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:
 au BufNewFile,BufRead   *.cc    set filetype=cpp
 au BufNewFile,BufRead   *.hrp   set filetype=cpp
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File Open settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -321,6 +317,12 @@ nnoremap <silent> <Leader>a :FSHere<CR>
 " ctrlp settings 
 " (S)快速打开文件
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" ctrlp过滤文件和文件夹类型
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[V]\.(git|hg|svn|rvm)$',
+    \ 'file':'\v\.(zip|tar|tar.gz|so|o|pyc)',
+    \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD tree settings
@@ -406,15 +408,6 @@ let g:ycm_warning_symbol = '>*'
 " 打开YCM语法检查
 let g:ycm_show_diagnostics_ui = 0
 
-" 强制YCM语法检查
-nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
-
-" 提供Python3补全
-let g:ycm_python_binary_path = '/usr/bin/python3'
-
-" 关闭preview window
-nnoremap <F1> <C-W>z<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-surround settings
 " https://github.com/tpope/vim-surround
@@ -489,9 +482,11 @@ let g:airline_theme='solarized'
 " 设置minibufexplorerpp窗口最大高度为2行
 " let g:miniBufExplMaxSize = 2
 
-" 切换标签快捷键
+" 下一个标签
 nnoremap <silent> ) :bn<CR>
+" 上一个标签
 nnoremap <silent> ( :bp<CR>
+" 关闭当前标签
 nnoremap <silent> <Leader>d :bd<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
