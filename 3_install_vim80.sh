@@ -2,6 +2,7 @@
 
 echo '123456' | sudo -S yum -y install ncurses-devel python-devel ruby-devel lua-devel  perl-devel
 
+mkdir -p ~/path/to
 mkdir -p ~/download
 cd ~/download
 
