@@ -292,9 +292,9 @@ endif
 " (S)颜色主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " molokai Theme settings
@@ -302,10 +302,10 @@ endif
 " (S)颜色主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set background=dark
-let g:molokai_original=1
-let g:rehash256=1
-colorscheme molokai
+"set background=dark
+"let g:molokai_original=1
+"let g:rehash256=1
+"colorscheme molokai
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-fswitch settings 
