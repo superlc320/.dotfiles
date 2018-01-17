@@ -439,7 +439,9 @@ noremap <F5> :Autoformat<CR>
 
 " 使用astyple格式化代码
 let g:formatterpath = ['/usr/bin/astyle']
-let g:formatdef_my_custom_cpp = '"astyle --style=kr --pad-oper --indent-switches"'
+"let g:formatdef_my_custom_cpp = '"astyle --style=kr --indent=spaces=4 --indent-switches --pad-oper --pad-header --align-pointer=type --break-closing-braces --add-braces"'
+"let g:formatdef_my_custom_cpp = '"astyle -A3 -s4 -S -p -H -k1 -y -j"'
+let g:formatdef_my_custom_cpp = '"astyle -A3s4SpHk1yj"'
 let g:formatters_cpp = ['my_custom_cpp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
