@@ -197,8 +197,17 @@ set pastetoggle=<F12>
 " 设置复制粘贴系统剪切板
 set clipboard=unnamedplus
 
-" 设置字体为utf-8
+" 设置Vim内部使用的字符编码，包括Vim的buffer、菜单文本、消息文本
 set encoding=utf-8
+
+" Vim中当前编辑的文件的字符编码方式，Vim保存文件是也会将文件保存为这种字符编码方式（不管是否新文件）
+" set fileencoding=utf-8
+
+" Vim自动探测fileencoding的顺序列表
+set fileencodings=utf-8,gbk,gb2312,gb18030,ucs-bom,cp936,latin1
+
+" Vim所工作的终端的字符编码方式，通常不需要设置
+" set termencoding=utf-8
 
 " 文件不自动换行
 set nowrap
