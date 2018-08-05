@@ -261,12 +261,12 @@ nnoremap <C-W> <C-W><C-W>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w<CR>:!gcc % -o %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w<CR>:!gcc % -g -o %:r && gdb %:r<CR>
+autocmd filetype c nnoremap <F9> :w<CR>:!gcc-8 % -o %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F10> :w<CR>:!gcc-8 % -g -o %:r && gdb %:r<CR>
 
 " g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:r<CR>
+autocmd filetype cpp nnoremap <F9> :w<CR>:!g++-8 -std=c++11 % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w<CR>:!g++-8 -std=c++11 % -g -o %:r && gdb %:r<CR>
 
 " python3 run python file
 ""autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 

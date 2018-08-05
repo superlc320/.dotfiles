@@ -95,3 +95,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias gcc="gcc-8"
+alias g++="g++-8"
+
+alias config_ycm="~/.vim/bundle/YCM-Generator/config_gen.py"
+alias cf="cd ~/Code/ACM/codeforces/"
