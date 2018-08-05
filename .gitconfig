@@ -1,31 +1,31 @@
 [user]
-	name = superlc320
-	email = luocan14@gmail.com
+    name = superlc320
+    email = luocan14@gmail.com
 [push]
-	default = simple
+    default = simple
 [core]
-	editor = vim
+    editor = vim
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [color]
-	ui = auto
+    ui = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 [alias]
-	co = checkout
+    co = checkout
     br = branch
     cm = commit -m
     ca = commit -a -m
