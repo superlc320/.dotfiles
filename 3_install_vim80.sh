@@ -13,6 +13,7 @@ cd vim-8.1.0500
 make distclean
 # CFLAGS="-I/usr/lib64/perl5/CORE/" 
 # ./configure --prefix=/export/luocan/path/to --with-features=huge --enable-pythoninterp --enable-rubyinterp --enable-luainterp --enable-perlinterp
-./configure --prefix=/export/luocan/path/to --with-features=huge --enable-pythoninterp --enable-rubyinterp --enable-luainterp
+# ./configure --prefix=/export/luocan/path/to --with-features=huge --enable-pythoninterp --enable-rubyinterp --enable-luainterp
+./configure --prefix=/export/luocan/path/to --with-features=huge --enable-pythoninterp --enable-luainterp
 make 
 make install
