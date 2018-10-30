@@ -7,130 +7,67 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle Settings
+" vim-plug Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use the Vim's keyboard setting, not vi
-set nocompatible              " be iMproved, required
-" Close filetype detection
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-""Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-""Plugin 'L9'
-" Git plugin not hosted on GitHub
-""Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-""Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-""Plugin 'ascenator/L9', {'name': 'newL9'}
+call plug#begin('~/.vim/bundle')
 
 " solarized颜色主题
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
-" molokai颜色主题
-Plugin 'tomasr/molokai' 
+" 多标签
+Plug 'vim-scripts/minibufexplorerpp'
 
-" C++语法增强高亮
-Plugin 'octol/vim-cpp-enhanced-highlight'
+" 状态栏
+Plug 'vim-airline/vim-airline'
 
-" 头文件源文件切换
-Plugin 'derekwyatt/vim-fswitch' 
-
-" 快速打开文件
-Plugin 'ctrlpvim/ctrlp.vim'
+" 状态栏主题
+Plug 'vim-airline/vim-airline-themes'
 
 " 目录树
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" 为代码添加注释
-Plugin 'scrooloose/nerdcommenter'
+" 头文件源文件切换
+Plug 'derekwyatt/vim-fswitch' 
+
+" 快速打开文件
+Plug 'ctrlpvim/ctrlp.vim'
+
+" 扩大缩小选定区域
+Plug 'terryma/vim-expand-region'
 
 " 自动补全神器
 " 安装后需要按照官网说明进行编译
-" 支持语义补全部分需要仔细阅读
 " 还需要配置.ycm_extra_conf.py
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " 根据工程Makefile生成YCM的配置文件
-Plugin 'rdnetto/YCM-Generator'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " 自动补全引号，括号
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " 改变一对标记，（括号，引号，XML标记，等等）
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " 自动格式化
 " 注意需要自己安装format软件，指定路径
 " C系语言用astyle
-Plugin 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 
-" 状态栏
-Plugin 'vim-airline/vim-airline'
+" 为代码添加注释
+Plug 'scrooloose/nerdcommenter'
 
-" 状态栏主题
-Plugin 'vim-airline/vim-airline-themes'
+" 快速对齐
+Plug 'junegunn/vim-easy-align'
 
-" 扩大缩小选定区域
-Plugin 'terryma/vim-expand-region'
-
-" 多标签
-Plugin 'vim-scripts/minibufexplorerpp'
-
-" taglist
-Plugin 'vim-scripts/taglist.vim'
-
-" cctree
-Plugin 'vim-scripts/CCTree'
-
-" winmanager
-Plugin 'vim-scripts/winmanager'
-
-" easymotion
-"""Plugin 'easymotion/vim-easymotion'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Initialize plugin system
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
 " 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" 打开文件类型检测
-filetype on
-
-" 根据不同的文件类型加载对应的插件
-filetype plugin on
 
 " 显示行号
 set number
