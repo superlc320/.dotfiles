@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo '112358' | sudo -S yum -y install ncurses-devel python-devel ruby-devel lua-devel  perl-devel
+sudo yum -y install ncurses-devel python-devel ruby-devel lua-devel  perl-devel
 
 mkdir -p ~/path/to
 mkdir -p ~/download
