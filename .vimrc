@@ -1,9 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Filename     : .vimrc
-" Creator      : superlc320
-" Created Time : 2016.04.22
-" E-mail       : luocan14@gmail.com
-" URL          : https://github.com/superlc320/.dotfiles
+" Author        : superlc320
+" Create Date   : 2016.04.22
+" E-mail        : luocan14@gmail.com
+" Repo URL      : https://github.com/superlc320/.dotfiles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
