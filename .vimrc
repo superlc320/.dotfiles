@@ -243,6 +243,22 @@ let g:solarized_termcolors=256
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" minibufexplorerpp settings 
+" https://github.com/vim-scripts/minibufexplorerpp
+" (S)多标签
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 设置minibufexplorerpp窗口最大高度为2行
+" let g:miniBufExplMaxSize = 2
+
+" 下一个标签
+nnoremap <silent> ) :bn<CR>
+" 上一个标签
+nnoremap <silent> ( :bp<CR>
+" 关闭当前标签
+nnoremap <silent> <Leader>d :bd<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-fswitch settings 
 " (S)头文件源文件切换
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -410,21 +426,6 @@ let g:airline_theme='solarized'
 " map K <Plug>(expand_region_expand)
 " map J <Plug>(expand_region_shrink)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" minibufexplorerpp settings 
-" https://github.com/vim-scripts/minibufexplorerpp
-" (S)多标签
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" 设置minibufexplorerpp窗口最大高度为2行
-" let g:miniBufExplMaxSize = 2
-
-" 下一个标签
-nnoremap <silent> ) :bn<CR>
-" 上一个标签
-nnoremap <silent> ( :bp<CR>
-" 关闭当前标签
-nnoremap <silent> <Leader>d :bd<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags settings 
