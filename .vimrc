@@ -218,6 +218,7 @@ autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:
 ""au BufNewFile,BufRead   *.suffix    set filetype=new_file_type
 au BufNewFile,BufRead   *.cc    set filetype=cpp
 au BufNewFile,BufRead   *.hrp   set filetype=cpp
+au BufNewFile,BufRead   *.hpp   set filetype=cpp
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File Open settings
@@ -240,17 +241,6 @@ endif
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" molokai Theme settings
-" https://github.com/tomasr/molokai 
-" (S)颜色主题
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"set background=dark
-"let g:molokai_original=1
-"let g:rehash256=1
-"colorscheme molokai
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-fswitch settings 
