@@ -2,7 +2,7 @@
 " Author        : superlc320
 " Create Date   : 2016.04.22
 " E-mail        : luocan14@gmail.com
-" Repo URL      : https://github.com/superlc320/.dotfiles
+" Repo          : https://github.com/superlc320/.dotfiles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
