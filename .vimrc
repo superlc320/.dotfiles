@@ -32,9 +32,6 @@ Plug 'derekwyatt/vim-fswitch'
 " 快速打开文件
 Plug 'ctrlpvim/ctrlp.vim'
 
-" 扩大缩小选定区域
-Plug 'terryma/vim-expand-region'
-
 " 自动补全神器
 " 安装后需要按照官网说明进行编译
 " 还需要配置.ycm_extra_conf.py
@@ -43,16 +40,19 @@ Plug 'Valloric/YouCompleteMe'
 " 根据工程Makefile生成YCM的配置文件
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
+" 自动格式化
+" 注意需要自己安装format软件，指定路径
+" C系语言用astyle
+Plug 'Chiel92/vim-autoformat'
+
 " 自动补全引号，括号
 Plug 'jiangmiao/auto-pairs'
 
 " 改变一对标记，（括号，引号，XML标记，等等）
 Plug 'tpope/vim-surround'
 
-" 自动格式化
-" 注意需要自己安装format软件，指定路径
-" C系语言用astyle
-Plug 'Chiel92/vim-autoformat'
+" 扩大缩小选定区域
+Plug 'terryma/vim-expand-region'
 
 " 为代码添加注释
 Plug 'scrooloose/nerdcommenter'
