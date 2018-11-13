@@ -259,6 +259,17 @@ nnoremap <silent> ( :bp<CR>
 nnoremap <silent> <Leader>d :bd<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-airline settings 
+" https://github.com/vim-airline/vim-airline
+" (S)状态栏
+" vim-airline-themes settings 
+" https://github.com/vim-airline/vim-airline-themes
+" (S)状态栏主题
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:airline_theme='solarized'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-fswitch settings 
 " (S)头文件源文件切换
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -394,17 +405,6 @@ let g:formatterpath = ['/usr/bin/astyle']
 "let g:formatdef_my_custom_cpp = '"astyle -A3 -s4 -S -p -H -k1 -y -j -n"'
 let g:formatdef_my_custom_cpp = '"astyle -A3s4SpHk1yjn"'
 let g:formatters_cpp = ['my_custom_cpp']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-airline settings 
-" https://github.com/vim-airline/vim-airline
-" (A)状态栏
-" vim-airline-themes settings 
-" https://github.com/vim-airline/vim-airline-themes
-" (A)状态栏主题
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:airline_theme='solarized'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto-pairs settings 
