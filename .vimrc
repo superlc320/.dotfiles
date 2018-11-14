@@ -309,26 +309,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_by_filename = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERD commenter settings
-" https://github.com/scrooloose/nerdcommenter
-" (A)快速注释
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" [count]<Leader>cc 注释当前行和选中行
-" [count]<Leader>cn 注释当前行和选中行, forces nesting
-" [count]<Leader>c<space> 反转当前行和选中行的注释状态，所有状态只和最上面一行状态有关
-" [count]<Leader>cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
-" [count]<Leader>ci 独立反转选中区域的注释状态，每行只和自己之前的状态有关
-" [count]<Leader>cs 添加性感的注释，通常用于代码开头介绍部分
-" [count]<Leader>cy 先复制选中部分，再cc
-" <Leader>c$        注释当前光标到行尾的内容
-" <Leader>cA        跳转到当前行尾添加注释，并进入插入模式
-" <Leader>ca        切换注释的方式，比如: /**/和//
-" <Leader>cl        左对齐
-" <Leader>cb        左右对齐
-" <Leader>cu        取消注释
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -360,6 +340,24 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " 补全之后关闭preview窗口
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+" 关闭YCM语法检查
+let g:ycm_show_diagnostics_ui = 0
+
+" 选择下一个补全项
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+
+" 选择上一个补全项
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+
+" 停止补全
+let g:ycm_key_list_stop_completion = ['<C-y>']
+
+" 输入1个字母即可触发语义补全
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+            \ 'cs,lua,javascript': ['re!\w{1}'],
+            \ }
+
 " 转到声明
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " 转到定义
@@ -367,11 +365,25 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 " 转到定义或声明
 nnoremap <leader>tt :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERD commenter settings
+" https://github.com/scrooloose/nerdcommenter
+" (A)快速注释
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 打开YCM语法检查
-let g:ycm_show_diagnostics_ui = 0
+" [count]<Leader>cc 注释当前行和选中行
+" [count]<Leader>cn 注释当前行和选中行, forces nesting
+" [count]<Leader>c<space> 反转当前行和选中行的注释状态，所有状态只和最上面一行状态有关
+" [count]<Leader>cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
+" [count]<Leader>ci 独立反转选中区域的注释状态，每行只和自己之前的状态有关
+" [count]<Leader>cs 添加性感的注释，通常用于代码开头介绍部分
+" [count]<Leader>cy 先复制选中部分，再cc
+" <Leader>c$        注释当前光标到行尾的内容
+" <Leader>cA        跳转到当前行尾添加注释，并进入插入模式
+" <Leader>ca        切换注释的方式，比如: /**/和//
+" <Leader>cl        左对齐
+" <Leader>cb        左右对齐
+" <Leader>cu        取消注释
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-surround settings
