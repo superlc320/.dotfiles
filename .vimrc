@@ -366,45 +366,7 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>tt :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERD commenter settings
-" https://github.com/scrooloose/nerdcommenter
-" (A)快速注释
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" [count]<Leader>cc 注释当前行和选中行
-" [count]<Leader>cn 注释当前行和选中行, forces nesting
-" [count]<Leader>c<space> 反转当前行和选中行的注释状态，所有状态只和最上面一行状态有关
-" [count]<Leader>cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
-" [count]<Leader>ci 独立反转选中区域的注释状态，每行只和自己之前的状态有关
-" [count]<Leader>cs 添加性感的注释，通常用于代码开头介绍部分
-" [count]<Leader>cy 先复制选中部分，再cc
-" <Leader>c$        注释当前光标到行尾的内容
-" <Leader>cA        跳转到当前行尾添加注释，并进入插入模式
-" <Leader>ca        切换注释的方式，比如: /**/和//
-" <Leader>cl        左对齐
-" <Leader>cb        左右对齐
-" <Leader>cu        取消注释
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-surround settings
-" https://github.com/tpope/vim-surround
-" (A)改变一对标记(引号，括号，XML标记)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" "Hello world!"
-" Press cs"'
-" => 'Hello world!'
-" Press cs'<q>
-" => <q>Hello world!</q>
-" Press cst"
-" => "Hello world!"
-" Press ds"
-" => Hello world!
-" 其余妙用，参见github
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-autoformat settings
-" ./install_astyle.sh
 " (S)C++代码格式化
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -430,6 +392,23 @@ let g:formatters_cpp = ['my_custom_cpp']
 " auto-pairs并不需要设置
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-surround settings
+" https://github.com/tpope/vim-surround
+" (A)改变一对标记(引号，括号，XML标记)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" "Hello world!"
+" Press cs"'
+" => 'Hello world!'
+" Press cs'<q>
+" => <q>Hello world!</q>
+" Press cst"
+" => "Hello world!"
+" Press ds"
+" => Hello world!
+" 其余妙用，参见github
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-expand-region settings 
 " https://github.com/jiangmiao/auto-pairs
 " (S)扩大缩小选定区域
@@ -441,6 +420,27 @@ let g:formatters_cpp = ['my_custom_cpp']
 " map K <Plug>(expand_region_expand)
 " map J <Plug>(expand_region_shrink)
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERD commenter settings
+" https://github.com/scrooloose/nerdcommenter
+" (A)快速注释
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" [count]<Leader>cc 注释当前行和选中行
+" [count]<Leader>cn 注释当前行和选中行, forces nesting
+" [count]<Leader>c<space> 反转当前行和选中行的注释状态，所有状态只和最上面一行状态有关
+" [count]<Leader>cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
+" [count]<Leader>ci 独立反转选中区域的注释状态，每行只和自己之前的状态有关
+" [count]<Leader>cs 添加性感的注释，通常用于代码开头介绍部分
+" [count]<Leader>cy 先复制选中部分，再cc
+" <Leader>c$        注释当前光标到行尾的内容
+" <Leader>cA        跳转到当前行尾添加注释，并进入插入模式
+" <Leader>ca        切换注释的方式，比如: /**/和//
+" <Leader>cl        左对齐
+" <Leader>cb        左右对齐
+" <Leader>cu        取消注释
+
+"" ctags和cscope有待整理，可能去掉
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags settings 
@@ -459,9 +459,4 @@ set tags+=./tags;
 noremap <F8> :!cscope -Rbqk
 
 "TODO 添加cscope设置
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" easymotion settings 
-" (S)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
