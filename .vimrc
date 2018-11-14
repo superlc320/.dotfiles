@@ -358,6 +358,10 @@ let g:ycm_semantic_triggers =  {
             \ 'cs,lua,javascript': ['re!\w{1}'],
             \ }
 
+" 不弹出预览窗口
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_comleteopt = 0
+
 " 转到声明
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " 转到定义
