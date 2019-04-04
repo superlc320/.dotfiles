@@ -391,9 +391,9 @@ noremap <F5> :Autoformat<CR>
 " --pad-header          -H
 " --align-pointer=type  -k1
 " do not retain a backup of the original file   -n 
-let g:formatdef_my_custom_cpp = '"astyle -A3s4SpHk1n"'
+let g:formatdef_my_custom_cpp = '"astyle -A2s4SpHk1n"'
 let g:formatters_cpp = ['my_custom_cpp']
-let g:formatdef_my_custom_c = '"astyle -A3s4SpHk1n"'
+let g:formatdef_my_custom_c = '"astyle -A2s4SpHk1n"'
 let g:formatters_c = ['my_custom_c']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
