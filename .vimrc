@@ -1,142 +1,90 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Filename     : .vimrc
-" Creator      : superlc320
-" Created Time : 2016.04.22
-" E-mail       : luocan14@gmail.com
-" URL          : https://github.com/superlc320/.dotfiles
+" Author        : superlc320
+" Create Date   : 2016.04.22
+" E-mail        : luocan14@gmail.com
+" Repository    : https://github.com/superlc320/.dotfiles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle Settings
+" vim-plug Settings
+" https://github.com/junegunn/vim-plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use the Vim's keyboard setting, not vi
-set nocompatible              " be iMproved, required
-" Close filetype detection
-filetype off                  " required
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-""Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-""Plugin 'L9'
-" Git plugin not hosted on GitHub
-""Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-""Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-""Plugin 'ascenator/L9', {'name': 'newL9'}
+call plug#begin('~/.vim/bundle')
 
 " solarized颜色主题
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
-" molokai颜色主题
-Plugin 'tomasr/molokai' 
+" 多标签
+Plug 'vim-scripts/minibufexplorerpp'
 
-" C++语法增强高亮
-Plugin 'octol/vim-cpp-enhanced-highlight'
+" 状态栏
+Plug 'vim-airline/vim-airline'
 
-" 头文件源文件切换
-Plugin 'derekwyatt/vim-fswitch' 
-
-" 快速打开文件
-Plugin 'ctrlpvim/ctrlp.vim'
+" 状态栏主题
+Plug 'vim-airline/vim-airline-themes'
 
 " 目录树
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" 为代码添加注释
-Plugin 'scrooloose/nerdcommenter'
+" 头文件源文件切换
+Plug 'derekwyatt/vim-fswitch' 
+
+" 快速打开文件
+Plug 'ctrlpvim/ctrlp.vim'
 
 " 自动补全神器
 " 安装后需要按照官网说明进行编译
-" 支持语义补全部分需要仔细阅读
 " 还需要配置.ycm_extra_conf.py
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " 根据工程Makefile生成YCM的配置文件
-Plugin 'rdnetto/YCM-Generator'
-
-" 自动补全引号，括号
-Plugin 'jiangmiao/auto-pairs'
-
-" 改变一对标记，（括号，引号，XML标记，等等）
-Plugin 'tpope/vim-surround'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " 自动格式化
 " 注意需要自己安装format软件，指定路径
 " C系语言用astyle
-Plugin 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 
-" 状态栏
-Plugin 'vim-airline/vim-airline'
+" 自动补全引号，括号
+Plug 'jiangmiao/auto-pairs'
 
-" 状态栏主题
-Plugin 'vim-airline/vim-airline-themes'
+" 改变一对标记，（括号，引号，XML标记，等等）
+Plug 'tpope/vim-surround'
 
 " 扩大缩小选定区域
-Plugin 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 
-" 多标签
-Plugin 'vim-scripts/minibufexplorerpp'
+" 为代码添加注释
+Plug 'scrooloose/nerdcommenter'
 
-" taglist
-Plugin 'vim-scripts/taglist.vim'
+" 快速对齐
+Plug 'junegunn/vim-easy-align'
 
-" cctree
-Plugin 'vim-scripts/CCTree'
-
-" winmanager
-Plugin 'vim-scripts/winmanager'
-
-" easymotion
-"""Plugin 'easymotion/vim-easymotion'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Initialize plugin system
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
 " 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 打开文件类型检测
-filetype on
-
-" 根据不同的文件类型加载对应的插件
-filetype plugin on
-
 " 显示行号
 set number
 
-" 在所有模式中启用鼠标
-set mouse=a
+" 在可视模式中启用鼠标
+set mouse=v
 
 " Backspace
 set backspace=indent,eol,start
@@ -261,12 +209,12 @@ nnoremap <C-W> <C-W><C-W>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w<CR>:!gcc-8 % -o %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w<CR>:!gcc-8 % -g -o %:r && gdb %:r<CR>
+autocmd filetype c nnoremap <F9> :w<CR>:!gcc % -o %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F10> :w<CR>:!gcc % -g -o %:r && gdb %:r<CR>
 
 " g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w<CR>:!g++-8 -std=c++11 % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w<CR>:!g++-8 -std=c++11 % -g -o %:r && gdb %:r<CR>
+autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:r<CR>
 
 " python3 run python file
 ""autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
@@ -282,6 +230,7 @@ autocmd filetype cpp nnoremap <F10> :w<CR>:!g++-8 -std=c++11 % -g -o %:r && gdb 
 ""au BufNewFile,BufRead   *.suffix    set filetype=new_file_type
 au BufNewFile,BufRead   *.cc    set filetype=cpp
 au BufNewFile,BufRead   *.hrp   set filetype=cpp
+au BufNewFile,BufRead   *.hpp   set filetype=cpp
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File Open settings
@@ -306,32 +255,31 @@ let g:solarized_termcolors=256
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" molokai Theme settings
-" https://github.com/tomasr/molokai 
-" (S)颜色主题
+" minibufexplorerpp settings 
+" https://github.com/vim-scripts/minibufexplorerpp
+" (S)多标签
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"set background=dark
-"let g:molokai_original=1
-"let g:rehash256=1
-"colorscheme molokai
+" 设置minibufexplorerpp窗口最大高度为2行
+" let g:miniBufExplMaxSize = 2
+
+" 下一个标签
+nnoremap <silent> ) :bn<CR>
+" 上一个标签
+nnoremap <silent> ( :bp<CR>
+" 关闭当前标签
+nnoremap <silent> <Leader>d :bd<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-fswitch settings 
-" (S)头文件源文件切换
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <Leader>a :FSHere<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrlp settings 
-" (S)快速打开文件
+" vim-airline settings 
+" https://github.com/vim-airline/vim-airline
+" (S)状态栏
+" vim-airline-themes settings 
+" https://github.com/vim-airline/vim-airline-themes
+" (S)状态栏主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ctrlp过滤文件和文件夹类型
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[V]\.(git|hg|svn|rvm)$',
-    \ 'file':'\v\.(zip|tar|tar.gz|so|o|pyc)',
-    \ }
+let g:airline_theme='solarized'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD tree settings
@@ -353,24 +301,24 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeIgnore=['\.o', '\.swp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERD commenter settings
-" https://github.com/scrooloose/nerdcommenter
-" (A)快速注释
+" vim-fswitch settings 
+" (S)头文件源文件切换
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <Leader>a :FSHere<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp settings 
+" (S)快速搜索并打开文件
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" [count]<Leader>cc 注释当前行和选中行
-" [count]<Leader>cn 注释当前行和选中行, forces nesting
-" [count]<Leader>c<space> 反转当前行和选中行的注释状态，所有状态只和最上面一行状态有关
-" [count]<Leader>cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
-" [count]<Leader>ci 独立反转选中区域的注释状态，每行只和自己之前的状态有关
-" [count]<Leader>cs 添加性感的注释，通常用于代码开头介绍部分
-" [count]<Leader>cy 先复制选中部分，再cc
-" <Leader>c$        注释当前光标到行尾的内容
-" <Leader>cA        跳转到当前行尾添加注释，并进入插入模式
-" <Leader>ca        切换注释的方式，比如: /**/和//
-" <Leader>cl        左对齐
-" <Leader>cb        左右对齐
-" <Leader>cu        取消注释
+" 设置搜索时过滤文件和文件夹类型
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file':'\v\.(exe|so|o|dll|zip|tar|tar.gz|pyc)',
+    \ }
+
+" 默认使用全路径搜索，置1后按文件名搜索，准确率会有所提高
+let g:ctrlp_by_filename = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe settings
@@ -379,6 +327,7 @@ let g:NERDTreeIgnore=['\.o', '\.swp']
 " 设置ycm global配置文件路径
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 " 关闭加载.ycm_extra_conf.py的提示
 let g:ycm_confirm_extra_conf = 0
@@ -404,6 +353,28 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " 补全之后关闭preview窗口
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+" 关闭YCM语法检查
+let g:ycm_show_diagnostics_ui = 0
+
+" 选择下一个补全项
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+
+" 选择上一个补全项
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+
+" 停止补全
+let g:ycm_key_list_stop_completion = ['<C-y>']
+
+" 输入1个字母即可触发语义补全
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+            \ 'cs,lua,javascript': ['re!\w{1}'],
+            \ }
+
+" 不弹出预览窗口
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_comleteopt = 0
+
 " 转到声明
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " 转到定义
@@ -411,11 +382,39 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 " 转到定义或声明
 nnoremap <leader>tt :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-autoformat settings
+" (S)C++代码格式化
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 打开YCM语法检查
-let g:ycm_show_diagnostics_ui = 0
+" 自动格式化
+noremap <F5> :Autoformat<CR>
+
+" 关闭写文件时自动格式化
+" au BufWrite * :Autoformat
+
+" 使用astyple格式化代码
+"let g:formatterpath = ['/usr/bin/astyle']
+
+" --style=kr            -A3
+" --indent=spaces=4     -s4
+" --indent-switches     -S
+" --pad-oper            -p
+" --pad-header          -H
+" --align-pointer=type  -k1
+" do not retain a backup of the original file   -n 
+let g:formatdef_my_custom_cpp = '"astyle -A2s4SpHk1n"'
+let g:formatters_cpp = ['my_custom_cpp']
+let g:formatdef_my_custom_c = '"astyle -A2s4SpHk1n"'
+let g:formatters_c = ['my_custom_c']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto-pairs settings 
+" https://github.com/jiangmiao/auto-pairs
+" (S)自动补全引号，括号
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" auto-pairs并不需要设置
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-surround settings
@@ -435,44 +434,6 @@ let g:ycm_show_diagnostics_ui = 0
 " 其余妙用，参见github
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-autoformat settings
-" ./install_astyle.sh
-" (S)C++代码格式化
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" 自动格式化
-noremap <F5> :Autoformat<CR>
-
-" 关闭写文件时自动格式化
-" au BufWrite * :Autoformat
-
-" 使用astyple格式化代码
-let g:formatterpath = ['/usr/bin/astyle']
-"let g:formatdef_my_custom_cpp = '"astyle --style=kr --indent=spaces=4 --indent-switches --pad-oper --pad-header --align-pointer=type --break-closing-braces --add-braces --suffix=none"'
-"let g:formatdef_my_custom_cpp = '"astyle -A3 -s4 -S -p -H -k1 -y -j -n"'
-let g:formatdef_my_custom_cpp = '"astyle -A3s4SpHk1yjn"'
-let g:formatters_cpp = ['my_custom_cpp']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-airline settings 
-" https://github.com/vim-airline/vim-airline
-" (A)状态栏
-" vim-airline-themes settings 
-" https://github.com/vim-airline/vim-airline-themes
-" (A)状态栏主题
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:airline_theme='solarized'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" auto-pairs settings 
-" https://github.com/jiangmiao/auto-pairs
-" (S)自动补全引号，括号
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" auto-pairs并不需要设置
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-expand-region settings 
 " https://github.com/jiangmiao/auto-pairs
 " (S)扩大缩小选定区域
@@ -485,20 +446,26 @@ let g:airline_theme='solarized'
 " map J <Plug>(expand_region_shrink)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" minibufexplorerpp settings 
-" https://github.com/vim-scripts/minibufexplorerpp
-" (S)多标签
+" NERD commenter settings
+" https://github.com/scrooloose/nerdcommenter
+" (A)快速注释
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 设置minibufexplorerpp窗口最大高度为2行
-" let g:miniBufExplMaxSize = 2
+" [count]<Leader>cc 注释当前行和选中行
+" [count]<Leader>cn 注释当前行和选中行, forces nesting
+" [count]<Leader>c<space> 反转当前行和选中行的注释状态，所有状态只和最上面一行状态有关
+" [count]<Leader>cm 对被选区域用一对注释符进行注释，前面的注释对每一行都会添加注释
+" [count]<Leader>ci 独立反转选中区域的注释状态，每行只和自己之前的状态有关
+" [count]<Leader>cs 添加性感的注释，通常用于代码开头介绍部分
+" [count]<Leader>cy 先复制选中部分，再cc
+" <Leader>c$        注释当前光标到行尾的内容
+" <Leader>cA        跳转到当前行尾添加注释，并进入插入模式
+" <Leader>ca        切换注释的方式，比如: /**/和//
+" <Leader>cl        左对齐
+" <Leader>cb        左右对齐
+" <Leader>cu        取消注释
 
-" 下一个标签
-nnoremap <silent> ) :bn<CR>
-" 上一个标签
-nnoremap <silent> ( :bp<CR>
-" 关闭当前标签
-nnoremap <silent> <Leader>d :bd<CR>
+"" ctags和cscope有待整理，可能去掉
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags settings 
@@ -517,36 +484,3 @@ set tags+=./tags;
 noremap <F8> :!cscope -Rbqk
 
 "TODO 添加cscope设置
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" taglist settings 
-" (B)显示taglist
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nnoremap <F6> :TlistToggle<CR>
-
-" 只展示一个文件的taglist
-let Tlist_Show_One_File = 1
-" 当taglist是最后一个窗口时自动退出
-let Tlist_Exit_OnlyWindow = 1
-" 在右边显示taglist窗口
-let Tlist_Use_Right_Window = 1
-" tag按名字排序
-let Tlist_Sort_Type = "name"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" cctree settings 
-" (S)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" winmanager settings 
-" (S)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" easymotion settings 
-" (S)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
