@@ -25,11 +25,12 @@
     changed = green
     untracked = cyan
 [alias]
-    co = checkout
     br = branch
-    cm = commit -m
+    co = checkout
+    ci = commit -m
     ca = commit -a -m
+    df = diff
     st = status
     lg = log --graph --oneline --all --decorate
-    df = diff
+    last = log -l HEAD
 
