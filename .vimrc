@@ -143,7 +143,7 @@ set t_Co=256
 set pastetoggle=<F12>
 
 " 设置复制粘贴系统剪切板
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " 设置Vim内部使用的字符编码，包括Vim的buffer、菜单文本、消息文本
 set encoding=utf-8
@@ -209,12 +209,16 @@ nnoremap <C-W> <C-W><C-W>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w<CR>:!gcc % -o %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w<CR>:!gcc % -g -o %:r && gdb %:r<CR>
+autocmd filetype c nnoremap <F7>        :w<CR>:!gcc-11 % -o %:r<CR>
+autocmd filetype c nnoremap <F8>        :w<CR>:!gcc-11 % -g -o %:r<CR>
+autocmd filetype c nnoremap <F9>        :w<CR>:!gcc-11 % -o %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F10>       :w<CR>:!gcc-11 % -g -o %:r && gdb %:r<CR>
 
 " g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:r<CR>
+autocmd filetype cpp nnoremap <F7>      :w<CR>:!g++-11 -std=c++11 % -o %:r<CR>
+autocmd filetype cpp nnoremap <F8>      :w<CR>:!g++-11 -std=c++11 % -g -o %:r<CR>
+autocmd filetype cpp nnoremap <F9>      :w<CR>:!g++-11 -std=c++11 % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10>     :w<CR>:!g++-11 -std=c++11 % -g -o %:r && gdb %:r<CR>
 
 " python3 run python file
 ""autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
@@ -375,6 +379,9 @@ let g:ycm_semantic_triggers =  {
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_comleteopt = 0
 
+" 不自动补全头文件
+let g:ycm_clangd_args=['--header-insertion=never']
+
 " 转到声明
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 " 转到定义
@@ -465,22 +472,3 @@ let g:formatters_c = ['my_custom_c']
 " <Leader>cb        左右对齐
 " <Leader>cu        取消注释
 
-"" ctags和cscope有待整理，可能去掉
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctags settings 
-" (B)系统已有ctags软件
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-noremap<F7> :!ctags -R --c++-kinds=+px --fields=+iaS --extra=+q <CR>
-set tags+=tags;
-set tags+=./tags;
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" cscope settings 
-" (B)系统已有cscope软件
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-noremap <F8> :!cscope -Rbqk
-
-"TODO 添加cscope设置

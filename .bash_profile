@@ -26,5 +26,7 @@ function proxy_ls() {
 
 proxy_on
 
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
 alias config_ycm="~/.vim/bundle/YCM-Generator/config_gen.py"
 
