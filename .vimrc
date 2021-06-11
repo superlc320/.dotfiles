@@ -400,20 +400,10 @@ noremap <F5> :Autoformat<CR>
 " 关闭写文件时自动格式化
 " au BufWrite * :Autoformat
 
-" 使用astyple格式化代码
-"let g:formatterpath = ['/usr/bin/astyle']
-
-" --style=kr            -A3
-" --indent=spaces=4     -s4
-" --indent-switches     -S
-" --pad-oper            -p
-" --pad-header          -H
-" --align-pointer=type  -k1
-" do not retain a backup of the original file   -n 
-let g:formatdef_my_custom_cpp = '"astyle -A2s4SpHk1n"'
-let g:formatters_cpp = ['my_custom_cpp']
-let g:formatdef_my_custom_c = '"astyle -A2s4SpHk1n"'
+let g:formatdef_my_custom_c = '"clang-format"'
 let g:formatters_c = ['my_custom_c']
+let g:formatdef_my_custom_cpp = '"clang-format"'
+let g:formatters_cpp = ['my_custom_cpp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto-pairs settings 
