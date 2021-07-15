@@ -110,14 +110,14 @@ set foldlevel=99
 " 将当前行的对齐格式应用到新的下一行
 set autoindent
 
-" 缩进格式化时缩进4个字符
-set shiftwidth=4
+" 缩进格式化时缩进2个字符
+set shiftwidth=2
 
-" 在插入模式下输入tab缩进4个字符
-set tabstop=4
+" 在插入模式下输入tab缩进2个字符
+set tabstop=2
 
-" 将4个连续空格视为一个tab，一次删除4个空格
-set softtabstop=4
+" 将2个连续空格视为一个tab，一次删除2个空格
+set softtabstop=2
 
 " 将tab扩展为空格
 " 在Makefile中Tab有特殊意义，不应该被转换
