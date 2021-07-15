@@ -1,0 +1,19 @@
+---
+BasedOnStyle: Google
+
+---
+Language: Cpp
+
+# 指针和引用的对齐
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+# 连续赋值时，对齐所有的等号
+AlignConsecutiveAssignments: false
+
+# 允许短的inline函数和类成员函数折叠到1行
+AllowShortFunctionsOnASingleLine: InlineOnly
+
+---
+Language: Proto
+
