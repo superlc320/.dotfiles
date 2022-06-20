@@ -1,8 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Author        : superlc320
-" Create Date   : 2016.04.22
+" author        : superlc320
+" created date  : 2016.04.22
 " E-mail        : luocan14@gmail.com
-" Repo          : https://github.com/superlc320/.dotfiles
+" repository    : https://github.com/superlc320/.dotfiles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -42,7 +42,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " 自动格式化
 " 注意需要自己安装format软件，指定路径
-" C系语言用astyle
+" 目前使用clang-format
 Plug 'Chiel92/vim-autoformat'
 
 " 自动补全引号，括号
@@ -452,24 +452,4 @@ let g:formatters_c = ['my_custom_c']
 " <Leader>cl        左对齐
 " <Leader>cb        左右对齐
 " <Leader>cu        取消注释
-
-"" ctags和cscope有待整理，可能去掉
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctags settings 
-" (B)系统已有ctags软件
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-noremap<F7> :!ctags -R --c++-kinds=+px --fields=+iaS --extra=+q <CR>
-set tags+=tags;
-set tags+=./tags;
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" cscope settings 
-" (B)系统已有cscope软件
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-noremap <F8> :!cscope -Rbqk
-
-"TODO 添加cscope设置
 
