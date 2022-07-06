@@ -131,7 +131,8 @@ set t_Co=256
 set pastetoggle=<F12>
 
 " 设置复制粘贴系统剪切板
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
+" 粘贴系统剪切版用"+p
 
 " 设置Vim内部使用的字符编码，包括Vim的buffer、菜单文本、消息文本
 set encoding=utf-8
@@ -197,12 +198,12 @@ nnoremap <C-W> <C-W><C-W>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w<CR>:!gcc % -o %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w<CR>:!gcc % -g -o %:r && gdb %:r<CR>
+autocmd filetype c nnoremap <F9> :w<CR>:!gcc-11 % -o %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F10> :w<CR>:!gcc-11 % -g -o %:r && gdb %:r<CR>
 
 " g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w<CR>:!g++ -std=c++11 % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w<CR>:!g++ -std=c++11 % -g -o %:r && gdb %:r<CR>
+autocmd filetype cpp nnoremap <F9> :w<CR>:!g++-11 -std=c++17 % -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F10> :w<CR>:!g++-11 -std=c++17 % -g -o %:r && gdb %:r<CR>
 
 " python3 run python file
 ""autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
@@ -378,23 +379,29 @@ nnoremap <leader>tt :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " 自动格式化
 noremap <F5> :Autoformat<CR>
 
-" 关闭写文件时自动格式化
-" au BufWrite * :Autoformat
+" 写文件时自动格式化
+" au BufWrite *.cpp :Autoformat
+" au BufWrite *.cc  :Autoformat
+" au BufWrite *.c   :Autoformat
+" au BufWrite *.hpp :Autoformat
+" au BufWrite *.h   :Autoformat
 
-" 使用astyple格式化代码
-"let g:formatterpath = ['/usr/bin/astyle']
+" 使用clang-format格式化代码
+let g:formatterpath = ['/usr/local/bin/clang-format']
 
-" --style=kr            -A3
-" --indent=spaces=4     -s4
-" --indent-switches     -S
-" --pad-oper            -p
-" --pad-header          -H
-" --align-pointer=type  -k1
-" do not retain a backup of the original file   -n 
-let g:formatdef_my_custom_cpp = '"astyle -A2s4SpHk1n"'
-let g:formatters_cpp = ['my_custom_cpp']
-let g:formatdef_my_custom_c = '"astyle -A2s4SpHk1n"'
-let g:formatters_c = ['my_custom_c']
+" clang-format示例
+" clang-format demo.cpp
+" clang-format demo.cpp > demo2.cpp
+" clang-format -i demo.cpp
+" clang-format -style=llvm -i demo.cpp
+
+let g:formatdef_myclangformat = '"clang-format"'
+
+let g:formatters_cpp = ['myclangformat']
+let g:formatters_cc  = ['myclangformat']
+let g:formatters_c   = ['myclangformat']
+let g:formatters_hpp = ['myclangformat']
+let g:formatters_h   = ['myclangformat']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto-pairs settings 
