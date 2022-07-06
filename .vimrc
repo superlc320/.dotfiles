@@ -138,13 +138,13 @@ set pastetoggle=<F12>
 set encoding=utf-8
 
 " Vim中当前编辑的文件的字符编码方式，Vim保存文件是也会将文件保存为这种字符编码方式（不管是否新文件）
-" set fileencoding=utf-8
+set fileencoding=utf-8
 
 " Vim自动探测fileencoding的顺序列表
 set fileencodings=utf-8,gbk,gb2312,gb18030,ucs-bom,cp936,latin1
 
 " Vim所工作的终端的字符编码方式，通常不需要设置
-" set termencoding=utf-8
+set termencoding=utf-8
 
 " 文件不自动换行
 set nowrap
