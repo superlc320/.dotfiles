@@ -6,7 +6,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-plug Settings
+" vim-plug settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/bundle')
@@ -33,16 +33,12 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " 自动补全神器
-" 安装后需要按照官网说明进行编译
-" 还需要配置.ycm_extra_conf.py
 Plug 'Valloric/YouCompleteMe'
 
 " 根据工程Makefile生成YCM的配置文件
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" 自动格式化
-" 注意需要自己安装format软件，指定路径
-" 目前使用clang-format
+" 一键格式化代码
 Plug 'Chiel92/vim-autoformat'
 
 " 自动补全引号，括号
@@ -64,8 +60,7 @@ Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General settings
-" 通用设置
+" general settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 显示行号
@@ -80,6 +75,25 @@ set backspace=indent,eol,start
 " 使用Vim默认的语法高亮
 syntax on
 
+" show mode
+set showmode
+
+" show cmd
+set showcmd
+
+" set vim color = 256
+set t_Co=256
+
+" 文件不自动换行
+set nowrap
+
+" vim命令行模式自动补全
+set wildmenu
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" search settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " 搜索结果高亮
 set hlsearch
 
@@ -89,14 +103,32 @@ set incsearch
 " 搜索时大小写不敏感
 ""set ignorecase
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" fold settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " za打开或关闭当前代码折叠
 set foldmethod=indent
 
 " 最大的折叠层级
 set foldlevel=99
 
-" 将当前行的对齐格式应用到新的下一行
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" indent settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 与上一行的缩进方式相同
 set autoindent
+
+" 用于类C编程语言的缩进，也可以用于其他语言。优先级高于autoindent
+set smartindent
+
+" C语言的缩进方式，可配置，更为严格。优先级高于smartindent
+set cindent
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tab settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 缩进格式化时缩进4个字符
 set shiftwidth=4
@@ -112,20 +144,9 @@ set softtabstop=4
 " 按Ctrl+v,再按Tab，就不会被转换了
 set expandtab
 
-" 缩进C语言内嵌代码块
-set cindent
-
-" 为C程序提供自动缩进
-set smartindent
-
-" show mode
-set showmode
-
-" show cmd
-set showcmd
-
-" set vim color = 256
-set t_Co=256
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" paste settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置切换粘贴状态快捷键
 set pastetoggle=<F12>
@@ -133,6 +154,10 @@ set pastetoggle=<F12>
 " 设置复制粘贴系统剪切板
 " set clipboard=unnamedplus
 " 粘贴系统剪切版用"+p
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" encoding settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置Vim内部使用的字符编码，包括Vim的buffer、菜单文本、消息文本
 set encoding=utf-8
@@ -146,15 +171,8 @@ set fileencodings=utf-8,gbk,gb2312,gb18030,ucs-bom,cp936,latin1
 " Vim所工作的终端的字符编码方式，通常不需要设置
 set termencoding=utf-8
 
-" 文件不自动换行
-set nowrap
-
-" vim命令行模式自动补全
-set wildmenu
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General shortcut settings
-" 通用快捷键设置
+" general shortcut settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 将<Leader>定义为空格键
@@ -193,8 +211,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-W> <C-W><C-W>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Compile and run settings
-" 快速编译运行单个源程序
+" compile and run settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " gcc compile and run C file
@@ -212,7 +229,7 @@ autocmd filetype cpp nnoremap <F10> :w<CR>:!g++-11 -std=c++17 % -g -o %:r && gdb
 ""autocmd filetype python nnoremap <F10> :w<CR>:!python %<CR> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Filetype settings
+" filetype settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " new file type
@@ -222,7 +239,7 @@ au BufNewFile,BufRead   *.hrp   set filetype=cpp
 au BufNewFile,BufRead   *.hpp   set filetype=cpp
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" File Open settings
+" file open settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " When open a file, always jump to the last cursor positon
@@ -234,9 +251,8 @@ if has("autocmd")
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Solarized Theme settings
+" solarized theme settings
 " https://github.com/altercation/vim-colors-solarized
-" (S)颜色主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set background=dark
@@ -246,7 +262,6 @@ colorscheme solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " minibufexplorerpp settings 
 " https://github.com/vim-scripts/minibufexplorerpp
-" (S)多标签
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置minibufexplorerpp窗口最大高度为2行
@@ -262,10 +277,8 @@ nnoremap <silent> <Leader>d :bd<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline settings 
 " https://github.com/vim-airline/vim-airline
-" (S)状态栏
 " vim-airline-themes settings 
 " https://github.com/vim-airline/vim-airline-themes
-" (S)状态栏主题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:airline_theme='solarized'
@@ -273,7 +286,6 @@ let g:airline_theme='solarized'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD tree settings
 " https://github.com/scrooloose/nerdtree
-" (S)目录树
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " open a NERDTree automatically when vim starts up
@@ -291,13 +303,11 @@ let g:NERDTreeIgnore=['\.o', '\.swp']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-fswitch settings 
-" (S)头文件源文件切换
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <Leader>a :FSHere<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlp settings 
-" (S)快速搜索并打开文件
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置搜索时过滤文件和文件夹类型
@@ -373,7 +383,6 @@ nnoremap <leader>tt :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-autoformat settings
-" (S)C++代码格式化
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 自动格式化
@@ -406,7 +415,6 @@ let g:formatters_h   = ['myclangformat']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto-pairs settings 
 " https://github.com/jiangmiao/auto-pairs
-" (S)自动补全引号，括号
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " auto-pairs并不需要设置
@@ -414,7 +422,6 @@ let g:formatters_h   = ['myclangformat']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-surround settings
 " https://github.com/tpope/vim-surround
-" (A)改变一对标记(引号，括号，XML标记)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " "Hello world!"
@@ -431,7 +438,6 @@ let g:formatters_h   = ['myclangformat']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-expand-region settings 
 " https://github.com/jiangmiao/auto-pairs
-" (S)扩大缩小选定区域
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 默认+扩大选定区域
@@ -443,7 +449,6 @@ let g:formatters_h   = ['myclangformat']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERD commenter settings
 " https://github.com/scrooloose/nerdcommenter
-" (A)快速注释
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " [count]<Leader>cc 注释当前行和选中行
