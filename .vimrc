@@ -60,6 +60,27 @@ Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" filetype settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" new file type
+""au BufNewFile,BufRead   *.suffix    set filetype=new_file_type
+au BufNewFile,BufRead   *.cc    set filetype=cpp
+au BufNewFile,BufRead   *.hpp   set filetype=h
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" file open settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" When open a file, always jump to the last cursor positon
+if has("autocmd")
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " general settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -136,6 +157,7 @@ set cindent
 
 " autoindent时缩进shiftwidth个空白字符区域
 set shiftwidth=4
+autocmd filetype c,cpp,h set shiftwidth=2
 
 " 当按下tab键输入一个制表符\t时，显示的空白字符区域等于softtabstop个空格
 " vim将连续tabstop个空白字符区域转换为1个\t
@@ -144,6 +166,8 @@ set shiftwidth=4
 " 前面的转为\t，最后剩余的几个是空格
 set tabstop=4
 set softtabstop=4
+autocmd filetype c,cpp,h set tabstop=2
+autocmd filetype c,cpp,h set softtabstop=2
 
 " 将制表符\t扩展为空格
 " 在Makefile中制表符\t有特殊意义，不应该被转换
@@ -233,28 +257,6 @@ autocmd filetype cpp nnoremap <F10> :w<CR>:!g++-11 -std=c++17 % -g -o %:r && gdb
 
 " python  run python file
 ""autocmd filetype python nnoremap <F10> :w<CR>:!python %<CR> 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" filetype settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" new file type
-""au BufNewFile,BufRead   *.suffix    set filetype=new_file_type
-au BufNewFile,BufRead   *.cc    set filetype=cpp
-au BufNewFile,BufRead   *.hrp   set filetype=cpp
-au BufNewFile,BufRead   *.hpp   set filetype=cpp
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" file open settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" When open a file, always jump to the last cursor positon
-if has("autocmd")
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal! g'\"" | 
-    \ endif
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " solarized theme settings
