@@ -90,6 +90,10 @@ set nowrap
 " vim命令行模式自动补全
 set wildmenu
 
+" 显示空白字符
+set lcs=tab:>-,trail:-
+noremap <F2> :set list!<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " search settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -130,17 +134,19 @@ set cindent
 " tab settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 缩进格式化时缩进4个字符
+" autoindent时缩进shiftwidth个空白字符区域
 set shiftwidth=4
 
-" 在插入模式下输入tab缩进4个字符
+" 当按下tab键输入一个制表符\t时，显示的空白字符区域等于softtabstop个空格
+" vim将连续tabstop个空白字符区域转换为1个\t
+" 但它还是制表符\t，不是空格
+" 当tabstop > softtabstop，并且n*softtabstop不是tabstop的倍数时，
+" 前面的转为\t，最后剩余的几个是空格
 set tabstop=4
-
-" 将4个连续空格视为一个tab，一次删除4个空格
 set softtabstop=4
 
-" 将tab扩展为空格
-" 在Makefile中Tab有特殊意义，不应该被转换
+" 将制表符\t扩展为空格
+" 在Makefile中制表符\t有特殊意义，不应该被转换
 " 按Ctrl+v,再按Tab，就不会被转换了
 set expandtab
 
@@ -149,7 +155,7 @@ set expandtab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 设置切换粘贴状态快捷键
-set pastetoggle=<F12>
+noremap <F12> :set paste!<CR>
 
 " 设置复制粘贴系统剪切板
 " set clipboard=unnamedplus
