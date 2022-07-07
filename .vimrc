@@ -87,8 +87,8 @@ endif
 " 显示行号
 set number
 
-" 在可视模式中启用鼠标
-set mouse=v
+" 在所有模式中启用鼠标
+set mouse=a
 
 " Backspace
 set backspace=indent,eol,start
