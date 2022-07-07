@@ -182,8 +182,7 @@ set expandtab
 noremap <F12> :set paste!<CR>
 
 " 设置复制粘贴系统剪切板
-" set clipboard=unnamedplus
-" 粘贴系统剪切版用"+p
+set clipboard^=unnamed,unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " encoding settings
