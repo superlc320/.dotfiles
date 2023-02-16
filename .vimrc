@@ -14,6 +14,9 @@ call plug#begin('~/.vim/bundle')
 " solarized颜色主题
 Plug 'altercation/vim-colors-solarized'
 
+" coc.nvim是一个基于NodeJS的拥有完整的LSP支持的智能补全插件
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " 多标签
 Plug 'vim-scripts/minibufexplorerpp'
 
@@ -31,15 +34,6 @@ Plug 'derekwyatt/vim-fswitch'
 
 " 快速打开文件
 Plug 'ctrlpvim/ctrlp.vim'
-
-" 自动补全神器
-Plug 'Valloric/YouCompleteMe'
-
-" 根据工程Makefile生成YCM的配置文件
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" 一键格式化代码
-Plug 'Chiel92/vim-autoformat'
 
 " 自动补全引号，括号
 Plug 'jiangmiao/auto-pairs'
@@ -115,6 +109,9 @@ set wildmenu
 set lcs=tab:>-,trail:-
 noremap <F2> :set list!<CR>
 
+" 第120列显示标尺
+set cc=120
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " search settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -149,7 +146,7 @@ set autoindent
 set smartindent
 
 " C语言的缩进方式，可配置，更为严格。优先级高于smartindent
-set cindent
+" set cindent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tab settings
@@ -243,19 +240,17 @@ nnoremap <C-W> <C-W><C-W>
 " compile and run settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" gcc compile and run C file
-autocmd filetype c nnoremap <F9> :w<CR>:!gcc-11 % -o %:r && ./%:r<CR>
-autocmd filetype c nnoremap <F10> :w<CR>:!gcc-11 % -g -o %:r && gdb %:r<CR>
+" clang compile and run C file
+autocmd filetype c nnoremap <F7>  :w<CR>:!clang % -o %:r<CR>
+autocmd filetype c nnoremap <F8>  :w<CR>:!clang % -o %:r && ./%:r<CR>
+autocmd filetype c nnoremap <F9>  :w<CR>:!clang % -g -o %:r<CR>
+autocmd filetype c nnoremap <F10> :w<CR>:!clang % -g -o %:r && lldb %:r<CR>
 
-" g++ compile and run c++ file
-autocmd filetype cpp nnoremap <F9> :w<CR>:!g++-11 -std=c++17 % -o %:r && ./%:r<CR>
-autocmd filetype cpp nnoremap <F10> :w<CR>:!g++-11 -std=c++17 % -g -o %:r && gdb %:r<CR>
-
-" python3 run python file
-""autocmd filetype python nnoremap <F9> :w<CR>:!python3 %<CR> 
-
-" python  run python file
-""autocmd filetype python nnoremap <F10> :w<CR>:!python %<CR> 
+" clang++ compile and run c++ file
+autocmd filetype cpp nnoremap <F7>  :w<CR>:!clang++ % -std=c++11 -o %:r<CR>
+autocmd filetype cpp nnoremap <F8>  :w<CR>:!clang++ % -std=c++11 -o %:r && ./%:r<CR>
+autocmd filetype cpp nnoremap <F9>  :w<CR>:!clang++ % -std=c++11 -g -o %:r<CR>
+autocmd filetype cpp nnoremap <F10> :w<CR>:!clang++ % -std=c++11 -g -o %:r && lldb %:r<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " solarized theme settings
@@ -327,97 +322,168 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_by_filename = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe settings
+" coc.nvim settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u<TAB>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim integrate clang-format settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" 设置ycm global配置文件路径
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+if has('python')
+  autocmd filetype c, cpp, objc map <C-I> :pyf /usr/local/share/clang/clang-format.py<cr>
+  autocmd filetype c, cpp, objc imap <C-I> <c-o>:pyf /usr/local/share/clang/clang-format.py<cr>
+elseif has('python3')
+  autocmd filetype c,cpp,objc map <C-I> :py3f /usr/local/share/clang/clang-format.py<cr>
+  autocmd filetype c,cpp,objc imap <C-I> <c-o>:py3f /usr/local/share/clang/clang-format.py<cr>
+endif
 
-" 关闭加载.ycm_extra_conf.py的提示
-let g:ycm_confirm_extra_conf = 0
-
-" 从第1个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion = 1
-
-" 打开基于tags的引擎
-let g:ycm_collect_identifiers_from_tags_files = 1
-
-" 在注释输入中也能补全
-let g:ycm_complete_in_comments = 1
-
-" 在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
-
-" 注释和字符串中的文字不会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-
-" 语法关键字补全
-let g:ycm_seed_identifiers_with_syntax = 1
-
-" 补全之后关闭preview窗口
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-" 关闭YCM语法检查
-let g:ycm_show_diagnostics_ui = 0
-
-" 选择下一个补全项
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-
-" 选择上一个补全项
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-
-" 停止补全
-let g:ycm_key_list_stop_completion = ['<C-y>']
-
-" 输入1个字母即可触发语义补全
-let g:ycm_semantic_triggers =  {
-            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
-            \ 'cs,lua,javascript': ['re!\w{1}'],
-            \ }
-
-" 不弹出预览窗口
-set completeopt=menu,menuone
-let g:ycm_add_preview_to_comleteopt = 0
-
-" 转到声明
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-" 转到定义
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-" 转到定义或声明
-nnoremap <leader>tt :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-autoformat settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" 自动格式化
-noremap <F5> :Autoformat<CR>
-
-" 写文件时自动格式化
-" au BufWrite *.cpp :Autoformat
-" au BufWrite *.cc  :Autoformat
-" au BufWrite *.c   :Autoformat
-" au BufWrite *.hpp :Autoformat
-" au BufWrite *.h   :Autoformat
-
-" 使用clang-format格式化代码
-let g:formatterpath = ['/usr/local/bin/clang-format']
-
-" clang-format示例
-" clang-format demo.cpp
-" clang-format demo.cpp > demo2.cpp
-" clang-format -i demo.cpp
-" clang-format -style=llvm -i demo.cpp
-
-let g:formatdef_myclangformat = '"clang-format"'
-
-let g:formatters_cpp = ['myclangformat']
-let g:formatters_cc  = ['myclangformat']
-let g:formatters_c   = ['myclangformat']
-let g:formatters_hpp = ['myclangformat']
-let g:formatters_h   = ['myclangformat']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto-pairs settings 
