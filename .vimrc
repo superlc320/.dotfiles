@@ -230,11 +230,11 @@ vnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 
 " 设置切换窗口快捷键
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-W> <C-W><C-W>
+"nnoremap <C-H> <C-W><C-H>
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-W> <C-W><C-W>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " compile and run settings
@@ -477,11 +477,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if has('python')
-  autocmd filetype c, cpp, objc map <C-I> :pyf /usr/local/share/clang/clang-format.py<cr>
-  autocmd filetype c, cpp, objc imap <C-I> <c-o>:pyf /usr/local/share/clang/clang-format.py<cr>
+  autocmd filetype c, cpp, objc nnoremap <C-L> :pyf /usr/local/share/clang/clang-format.py<cr>
+  autocmd filetype c, cpp, objc inoremap <C-L> <c-o>:pyf /usr/local/share/clang/clang-format.py<cr>
 elseif has('python3')
-  autocmd filetype c,cpp,objc map <C-I> :py3f /usr/local/share/clang/clang-format.py<cr>
-  autocmd filetype c,cpp,objc imap <C-I> <c-o>:py3f /usr/local/share/clang/clang-format.py<cr>
+  autocmd filetype c,cpp,objc nnoremap <C-L> :py3f /usr/local/share/clang/clang-format.py<cr>
+  autocmd filetype c,cpp,objc inoremap <C-L> <c-o>:py3f /usr/local/share/clang/clang-format.py<cr>
 endif
 
 
