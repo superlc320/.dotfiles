@@ -17,6 +17,9 @@ Plug 'altercation/vim-colors-solarized'
 " coc.nvim是一个基于NodeJS的拥有完整的LSP支持的智能补全插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" vim-autoformat
+Plug 'vim-autoformat/vim-autoformat'
+
 " 多标签
 Plug 'vim-scripts/minibufexplorerpp'
 
@@ -476,13 +479,20 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " vim integrate clang-format settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if has('python')
-  autocmd filetype c, cpp, objc nnoremap <C-L> :pyf /usr/local/share/clang/clang-format.py<cr>
-  autocmd filetype c, cpp, objc inoremap <C-L> <c-o>:pyf /usr/local/share/clang/clang-format.py<cr>
-elseif has('python3')
-  autocmd filetype c,cpp,objc nnoremap <C-L> :py3f /usr/local/share/clang/clang-format.py<cr>
-  autocmd filetype c,cpp,objc inoremap <C-L> <c-o>:py3f /usr/local/share/clang/clang-format.py<cr>
-endif
+let g:formatterpath = ['/usr/local/bin/clang-format']
+noremap <C-L> : Autoformat<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim integrate clang-format settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"if has('python')
+  "autocmd filetype c, cpp, objc map <C-L> :pyf /usr/local/share/clang/clang-format.py<cr>
+  "autocmd filetype c, cpp, objc imap <C-L> <c-o>:pyf /usr/local/share/clang/clang-format.py<cr>
+"elseif has('python3')
+  "autocmd filetype c,cpp,objc map <C-L> :py3f /usr/local/share/clang/clang-format.py<cr>
+  "autocmd filetype c,cpp,objc imap <C-L> <c-o>:py3f /usr/local/share/clang/clang-format.py<cr>
+"endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
